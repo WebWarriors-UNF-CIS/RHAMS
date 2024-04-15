@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "The Artwork of Reuban Hale",
-  description: "Artwork Management System for The Artwork of Reuban Hale, LLC",
+  description: "Artwork Management System for The Artwork of Reuban Hale, Inc.",
 };
 
 export default function RootLayout({
