@@ -1,95 +1,54 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import React from 'react';
 
-export default function Home() {
+const LoginPage: React.FC = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <div className="flex h-screen bg-gray-200">
+      <div className="flex w-1/2 bg-cover" style={{ backgroundImage: 'url(/)' }}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src="/path-to-your-background-image.jpg" // Use the image path from your public directory
+          alt="Artwork"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
           priority
         />
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="flex w-1/2 justify-center items-center bg-white">
+        <form className="max-w-xs w-full">
+          <h2 className="text-4xl font-bold mb-6">Log In</h2>
+          <div className="mb-4">
+            <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="me@domain.com"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="********"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div className="flex items-center justify-between mb-6">
+            <label className="flex items-center">
+              <input type="checkbox" className="form-checkbox" />
+              <span className="ml-2 text-sm">Remember Me</span>
+            </label>
+            <a href="#" className="inline-block align-baseline text-sm text-blue-500 hover:text-blue-800">Forgot Password?</a>
+          </div>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" type="button">
+            Log In
+          </button>
+        </form>
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default LoginPage;
