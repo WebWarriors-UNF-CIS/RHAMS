@@ -5,7 +5,7 @@ import { Entity, Fields, Relations } from 'remult'
 })
 export class Artwork {
     @Fields.integer()
-    id = ''
+    catalogId = ''
 
     @Fields.createdAt()
     createdAt = new Date()
