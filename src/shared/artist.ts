@@ -33,6 +33,6 @@ export class Artist {
 
     @Fields.string()                          // Image of the artist
     thumbnail = '';
-g
+
     //@Relations - > Exhibitions              // Exhibitions the artist has participated in/or featured in
 }
