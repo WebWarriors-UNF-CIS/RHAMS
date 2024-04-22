@@ -1,4 +1,4 @@
-import { Entity, Fields } from 'remult'
+import { Entity, Fields, Relations } from 'remult'
 
 @Entity('salesrec', {
   allowApiCrud: true,
@@ -6,9 +6,12 @@ import { Entity, Fields } from 'remult'
 export class SalesRec {
     @Fields.cuid()
     id = ''
+
     @Fields.createdAt()
     createdAt = new Date()
+
     @Fields.updatedAt()
     updatedAt = new Date()
+
   
 }
