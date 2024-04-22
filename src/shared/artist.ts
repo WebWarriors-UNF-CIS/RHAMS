@@ -34,5 +34,9 @@ export class Artist {
     @Fields.string()                          // Image of the artist
     thumbnail = '';
 
+    //@Realtions - > Artworks                 // Artworks created by the artist
+
     //@Relations - > Exhibitions              // Exhibitions the artist has participated in/or featured in
+
+    
 }
