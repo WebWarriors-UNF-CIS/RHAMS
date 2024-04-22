@@ -12,4 +12,14 @@ export class Edition {
 
     @Fields.updatedAt()
     updatedAt = new Date()
+
+    //@Relations.belongsTo() -> Parent Artwork record
+
+    //@Fields.valuelist() -> Edition # (i.e. 1/10, 2/10, etc.)
+
+    //@Fields.valuellist() -> Foundry
+
+    //@Realtions.hasMany() -> Collections
+
+    //@Realtions.hasMany() -> Sales Records
 }
