@@ -4,7 +4,11 @@ import { Entity, Fields } from 'remult'
   allowApiCrud: true,
 })
 export class Artwork {
-    @Fields.cuid()
+    @Fields.integer()
     id = ''
+    @Fields.createdAt()
+    createdAt = new Date()
+    @Fields.updatedAt()
+    updatedAt = new Date()
   
 }
