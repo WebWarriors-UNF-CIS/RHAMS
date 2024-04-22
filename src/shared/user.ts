@@ -13,5 +13,9 @@ export class User {
     @Fields.updatedAt()
     updatedAt = new Date()
 
-  
+    @Fields.string()
+    email = ''
+
+    @Fields.string()
+    password = ''
 }
