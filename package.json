@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@vercel/postgres": "^0.8.0",
-    "bootstrap": "^5.3.3",
     "express": "^4.19.2",
     "next": "^14.2.1",
     "pg": "^8.11.5",
