@@ -1,6 +1,6 @@
 import { Remult } from 'remult';
 import { Artist } from '../../../../shared/artist'; // import the Artist entity
-import { Location } from '../../../../shared/location'; // import the Location entity
+import { Location } from '../../../../shared/valuelist'; // import the Location entity
 
 // Define a type for the input data
 interface InputArtist {
