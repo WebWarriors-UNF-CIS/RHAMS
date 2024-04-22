@@ -31,5 +31,7 @@ export class Artist {
     @Fields.string({ allowNull: true })       // The death location of the artist
     deathLocation?: string;
 
+    //@Fields.image()?? - > Thumbnail         // Image of the artist
 
+    //@Relations - > Exhibitions              // Exhibitions the artist has participated in/or featured in
 }
