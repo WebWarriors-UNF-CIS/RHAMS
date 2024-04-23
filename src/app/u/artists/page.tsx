@@ -9,6 +9,7 @@ export default function ArtistOverview() {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
+  const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
@@ -29,13 +30,13 @@ export default function ArtistOverview() {
       </h1>
       <div className="flex flex-row">
         <div className="basis-1/4">
-          <Image src="https://via.placeholder.com/150" alt="placeholder" />
+          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
         </div>
         <div className="basis-1/4">
-          <Image src="https://via.placeholder.com/150" alt="placeholder" />
+          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
         </div>
         <div className="basis-1/2">
-          <Image src="https://via.placeholder.com/300" alt="placeholder" />
+          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
         </div>
         <div className="flex">
           {/* table */}
