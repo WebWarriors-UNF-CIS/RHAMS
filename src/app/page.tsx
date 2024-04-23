@@ -14,9 +14,11 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const login = async (e: React.FormEvent) => {
+  const login = async (e: React.FormEvent) => 
+    {
     e.preventDefault();
-    try {
+    try 
+    {
         userRepo.findFirst({ email: email, password: password }).then((user) => {
             if (user) {
               alert('Login successful');
@@ -25,9 +27,9 @@ export default function Login() {
                 alert('Login failed');
             }
         });
-    } catch (err) {
-        alert('Login failed');
-    }
+    } 
+    catch (err) 
+    {alert('Login failed');}
   };  
   return (
     <div className="flex h-screen bg-gray-200">
