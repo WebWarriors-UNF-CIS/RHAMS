@@ -2,14 +2,16 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { remult } from 'remult';
-import { User } from '../shared/user';
-import { Input } from '../components/ui/input';
-import { Button } from '../components/ui/button';
+import { User } from '@/shared/user';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { Checkbox } from "@/components/ui/checkbox"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { CheckIcon } from "@radix-ui/react-icons"
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons"
 import Image from "next/image";
 import Logo from "../public/images/logo-W.png";
 import React from 'react';
-import Link from 'next/link';
 
 
 const userRepo = remult.repo(User);
@@ -26,15 +28,30 @@ export default function Login() {
     {
         userRepo.findFirst({ email: email, password: password }).then((user) => {
             if (user) {
-              alert('Login successful');
-              router.push('/artist');
+              <Alert>
+                <CheckIcon className="h-4 w-4" />
+                <AlertTitle>Login Successful!</AlertTitle>
+              </Alert>
+              router.push('/u/artists');
             } else {
-                alert('Login failed');
+              <Alert variant="destructive">
+                <ExclamationTriangleIcon className="h-4 w-4" />
+                <AlertTitle>Login Failed</AlertTitle>
+                <AlertDescription>
+                  Your username or password is invalid. Please try again.
+                </AlertDescription>
+              </Alert>
             }
         });
     } 
     catch (err) 
-    {alert('Login failed');}
+    {<Alert variant="destructive">
+      <ExclamationTriangleIcon className="h-4 w-4" />
+      <AlertTitle>Login Failed</AlertTitle>
+      <AlertDescription>
+        Something went wrong. Please try again.
+      </AlertDescription>
+    </Alert>}
   };  
   return (
     <div className="flex flex-none h-screen object-contain bg-no-repeat bg-cover bg-center bg-fixed bg-[url('../public/images/abstract-women.jpg')]">

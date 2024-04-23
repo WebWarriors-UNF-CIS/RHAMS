@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
-export default function ArtistOverview() {
+export default function CreateArtwork() {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
@@ -17,7 +17,7 @@ export default function ArtistOverview() {
     if (pathname)   
     {
       const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[2]) + ' Placeholder Page');
+      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]) + ' Placeholder Page');
     }
   }, [pathname]);
 
@@ -41,10 +41,10 @@ export default function ArtistOverview() {
         </div>
       </div>
       <div className="flex flex-row justify-end gap-6 p-32">
-        <button  onClick={() => router.push('./artists/create')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
+        <button  onClick={() => router.push('/u/collections')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
             Next page
         </button>
-        <button  onClick={() => router.push('/')} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
+        <button  onClick={() => router.push('/u/artworks')} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
             Back
         </button>
       </div>
