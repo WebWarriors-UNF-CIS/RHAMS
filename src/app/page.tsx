@@ -64,7 +64,7 @@ export default function Login() {
                 placeholder='********'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input bg-input border border-border rounded-lg py-2 px-3 text-d mb-3 leading-tight focus:outline-none focus:ring"
+                className="input bg-input border border-border rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:ring"
               />
             </div>
             <div className="flex items-center justify-between px-2 mb-12">
