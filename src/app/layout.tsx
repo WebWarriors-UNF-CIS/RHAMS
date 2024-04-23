@@ -25,7 +25,7 @@ export default function RootLayout
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>RHAMS</title>
+        <title>The Artwork of Reuban Hale</title>
       </head>
       <body className={cn("min-h-screen bg-background font-sans antialiased",fontSans.variable)}>
         {children}
