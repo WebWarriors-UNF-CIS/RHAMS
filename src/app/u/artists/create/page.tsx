@@ -9,10 +9,11 @@ export default function CreateArtist() {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
+  const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
-
+  
   useEffect(() => 
   {
     if (pathname)   
@@ -21,7 +22,7 @@ export default function CreateArtist() {
       setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]) + ' Placeholder Page');
     }
   }, [pathname]);
-
+  
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center my-10">
@@ -29,13 +30,13 @@ export default function CreateArtist() {
       </h1>
       <div className="flex flex-row">
         <div className="basis-1/4">
-          <Image src="https://via.placeholder.com/150" alt="placeholder" />
+          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
         </div>
         <div className="basis-1/4">
-          <Image src="https://via.placeholder.com/150" alt="placeholder" />
+          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
         </div>
         <div className="basis-1/2">
-          <Image src="https://via.placeholder.com/300" alt="placeholder" />
+          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
         </div>
         <div className="flex">
           {/* table */}

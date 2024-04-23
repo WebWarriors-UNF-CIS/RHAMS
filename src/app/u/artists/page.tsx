@@ -10,6 +10,7 @@ export default function ArtistOverview() {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
+  const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
@@ -29,13 +30,14 @@ export default function ArtistOverview() {
       {slug || 'Loading...'}
       </h1>
       <div className="flex flex-row">
-        <div className="basis-1/2">
-          <h2 className="text-2xl font-bold">Search</h2>
+        <div className="basis-1/4">
+          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
+        </div>
+        <div className="basis-1/4">
+          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
         </div>
         <div className="basis-1/2">
-        <button  onClick={() => router.push('./artists/create')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
-            Add Artist
-        </button>
+          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
         </div>
         <div className="flex">
           {/* table */}
