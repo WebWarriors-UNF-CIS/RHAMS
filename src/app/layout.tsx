@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
  
 import { cn } from "@/lib/utils"
@@ -14,24 +15,20 @@ export const metadata: Metadata =
 {
   title: "The Artwork of Reuban Hale",
   description: "Artwork Management System for The Artwork of Reuban Hale, Inc.",
-  icons: {
-    icon: "./favicon.ico",
-  },
+  icons: {icon: "./favicon.ico"},
 };
 
 export default function RootLayout
-({children,}: Readonly<{children: React.ReactNode;}>) 
+({children,}: {children: React.ReactNode;}) 
 {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        ...
+      <head>
+        <title>RHAMS</title>
+      </head>
+      <body className={cn("min-h-screen bg-background font-sans antialiased",fontSans.variable)}>
+        {children}
+        <SpeedInsights/>
       </body>
     </html>
   )
