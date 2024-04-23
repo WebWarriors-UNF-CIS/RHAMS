@@ -20,6 +20,21 @@ const Page = () => {
       <h1 className="text-4xl font-bold text-center my-10">
         Title: {slug || 'Loading...'}
       </h1>
+      <h1 className="text-4xl font-bold my-10">Artists</h1>
+      <div className="flex flex-row">
+        <div className="basis-1/4">
+          <img src="https://via.placeholder.com/150" alt="placeholder" />
+        </div>
+        <div className="basis-1/4">
+          <img src="https://via.placeholder.com/150" alt="placeholder" />
+        </div>
+        <div className="basis-1/2">
+          <img src="https://via.placeholder.com/300" alt="placeholder" />
+      </div>
+      <div className="flex">
+        {/* artist table */}
+      </div>
+      </div>
         <button  onClick={() => router.push('./')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" type="button">
             Next page
         </button>
