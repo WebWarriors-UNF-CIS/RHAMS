@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import React from 'react';
+import Creatable from 'react-select/creatable';
 
 export default function CreateArtist() {
   const router = useRouter();
@@ -28,18 +29,9 @@ export default function CreateArtist() {
       <h1 className="text-4xl font-bold text-center my-10">
       {slug || 'Loading...'}
       </h1>
-      <div className="flex flex-row">
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
-        <div className="basis-1/2">
-          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
-        </div>
-        <div className="flex">
-          {/* table */}
+      <div className="flex justify-center">
+        <div className="">
+          <h1>Form will go here</h1>
         </div>
       </div>
       <div className="flex flex-row justify-end gap-6 p-32">
