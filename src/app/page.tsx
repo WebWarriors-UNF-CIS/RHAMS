@@ -10,7 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { CheckIcon } from "@radix-ui/react-icons"
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons"
 import Image from "next/image";
-import Logo from "../public/images/logo-W.png";
+import Logo from "../public/images/logo-w.png";
 import React from 'react';
 
 

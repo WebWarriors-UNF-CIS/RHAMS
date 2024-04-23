@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 import React from 'react';
 
 export default function MediaClipOverview() {
@@ -28,13 +29,13 @@ export default function MediaClipOverview() {
       </h1>
       <div className="flex flex-row">
         <div className="basis-1/4">
-          <img src="https://via.placeholder.com/150" alt="placeholder" />
+          <Image src="https://via.placeholder.com/150" alt="placeholder" />
         </div>
         <div className="basis-1/4">
-          <img src="https://via.placeholder.com/150" alt="placeholder" />
+          <Image src="https://via.placeholder.com/150" alt="placeholder" />
         </div>
         <div className="basis-1/2">
-          <img src="https://via.placeholder.com/300" alt="placeholder" />
+          <Image src="https://via.placeholder.com/300" alt="placeholder" />
         </div>
         <div className="flex">
           {/* table */}
