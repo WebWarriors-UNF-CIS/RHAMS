@@ -2,9 +2,8 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
+    './src/app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
   prefix: "",
@@ -18,6 +17,11 @@ module.exports = {
     },
     extend: {
       colors: {
+        a: '#348D48',
+        b: '#232C33',
+        c: '#F2F5EA',
+        d: '#A5CBC3',
+        e: '#547372',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
