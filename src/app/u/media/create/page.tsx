@@ -19,10 +19,10 @@ export default function CreateMediaClip() {
     if (pathname)   
     {
       const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[2]) + ' Placeholder Page');
+      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]) + ' Placeholder Page');
     }
   }, [pathname]);
-
+  
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center my-10">

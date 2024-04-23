@@ -13,16 +13,16 @@ export default function CreateArtist() {
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
-
+  
   useEffect(() => 
   {
     if (pathname)   
     {
       const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[2]) + ' Placeholder Page');
+      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]) + ' Placeholder Page');
     }
   }, [pathname]);
-
+  
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center my-10">

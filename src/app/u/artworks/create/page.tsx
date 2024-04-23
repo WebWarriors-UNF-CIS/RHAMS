@@ -19,7 +19,7 @@ export default function CreateArtwork() {
     if (pathname)   
     {
       const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[2]) + ' Placeholder Page');
+      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]) + ' Placeholder Page');
     }
   }, [pathname]);
 
