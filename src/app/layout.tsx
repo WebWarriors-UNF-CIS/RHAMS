@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
@@ -28,9 +29,14 @@ export default function RootLayout
         <title>The Artwork of Reuban Hale</title>
       </head>
       <body className={cn("min-h-screen bg-background font-sans antialiased",fontSans.variable)}>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            >
         {children}
         <SpeedInsights />
         <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )
