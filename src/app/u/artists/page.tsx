@@ -30,14 +30,14 @@ export default function ArtistOverview() {
       {slug || 'Loading...'}
       </h1>
       <div className="flex flex-row">
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
         <div className="basis-1/2">
-          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
+          <h1>Search</h1>
+        </div>
+        
+        <div className="basis-1/2">
+        <button  onClick={() => router.push('/u/artists/create')} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
+            Add Artist
+        </button>
         </div>
         <div className="flex">
           {/* table */}
