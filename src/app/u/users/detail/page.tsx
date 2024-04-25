@@ -33,15 +33,14 @@ export default function UsersDetail() {
       {/* Top Section with 'Add New' and 'Search' */}
       <div className="flex justify-between mb-4">
         <div className="flex space-x-4">
-          <div className="bg-blue-200 p-2 text-center">Add New Placeholder</div>
-          <div className="bg-green-200 p-2 text-center">+ Placeholder</div>
+          <div className="bg-blue-200 p-2 text-center">Add New </div>
         </div>
         <div className="bg-gray-200 p-2 text-center w-1/4">Search Placeholder</div>
       </div>
 
       {/* User Table Placeholder */}
       <div className="bg-gray-200 p-4">
-        <div className="bg-gray-300 p-4">User Table Placeholder</div>
+        <div className="bg-gray-300 h-96 p-4">User Table Placeholder</div>
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">

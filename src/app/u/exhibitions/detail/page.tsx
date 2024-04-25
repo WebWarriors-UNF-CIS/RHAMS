@@ -47,7 +47,7 @@ export default function ExhibitsDetail() {
 
       {/* Artwork Table */}
       <div className="bg-gray-200 p-4">
-        <div className="bg-gray-300 p-4">Artwork Table Placeholder</div>
+        <div className="bg-gray-300 h-96 p-4">Artwork Table Placeholder</div>
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">
