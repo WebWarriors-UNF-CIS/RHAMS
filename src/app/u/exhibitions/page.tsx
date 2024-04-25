@@ -38,7 +38,7 @@ export default function ExhibitionOverview() {
         </div>
         <div className="bg-purple-200 p-4 text-center flex-none">Search </div>
       </div>
-      <div className="bg-gray-300 p-8 text-center">
+      <div className="bg-gray-300 h-96 p-8 text-center">
         Exhibitions Table 
       </div>
     </div>
