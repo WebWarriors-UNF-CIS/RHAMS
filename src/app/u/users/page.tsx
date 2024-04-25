@@ -28,20 +28,18 @@ export default function UserAccountOverview() {
       <h1 className="text-4xl font-bold text-center my-10">
       {slug || 'Loading...'}
       </h1>
-      <div className="flex flex-row">
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
-        <div className="basis-1/2">
-          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
-        </div>
-        <div className="flex">
-          {/* table */}
-        </div>
+      <div className="container mx-auto p-6">
+      {/* Top Section with 'Add New' and 'Search' */}
+      <div className="flex justify-between mb-4">
+        <div className="bg-green-200 p-2 text-center">Add New +</div>
+        <div className="bg-gray-200 p-2 text-center w-1/4">Search Placeholder</div>
       </div>
+
+      {/* Table Placeholder */}
+      <div className="bg-gray-300 h-96 p-8 text-center">
+        Table Placeholder
+      </div>
+    </div>
       <div className="flex flex-row justify-end gap-6 p-32">
         <button  onClick={() => router.push('/u/users/create')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
             Next page
