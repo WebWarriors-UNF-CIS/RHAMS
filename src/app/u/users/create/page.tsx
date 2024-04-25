@@ -28,20 +28,27 @@ export default function CreateUserAccount() {
       <h1 className="text-4xl font-bold text-center my-10">
       {slug || 'Loading...'}
       </h1>
-      <div className="flex flex-row">
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
+      <div className="container mx-auto p-6">
+      {/* User Detail Form Section */}
+      <div className="bg-gray-200 p-4 mb-4">
+        <div className="mb-4">Details Placeholder</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="bg-gray-300 p-4">Name Placeholder</div>
+          <div className="bg-gray-300 p-4">Username Placeholder</div>
+          <div className="bg-gray-300 p-4">Password Placeholder</div>
+          <div className="bg-gray-300 p-4">Email Placeholder</div>
+          <div className="bg-gray-300 p-4">Select Role Placeholder</div>
+          <div className="bg-gray-300 p-4">Active Checkbox Placeholder</div>
         </div>
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
-        <div className="basis-1/2">
-          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
-        </div>
-        <div className="flex">
-          {/* table */}
-        </div>
+        <div className="bg-gray-300 p-4">Notes Placeholder</div>
       </div>
+
+      {/* Action Buttons Section */}
+      <div className="flex justify-end gap-4">
+        <button className="bg-red-500 text-white p-2">Delete User Placeholder</button>
+        <button className="bg-green-500 text-white p-2">Add New User Placeholder</button>
+      </div>
+    </div>
       <div className="flex flex-row justify-end gap-6 p-32">
         <button  onClick={() => router.push('/u/artists')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
             Next page
