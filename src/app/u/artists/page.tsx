@@ -37,7 +37,7 @@ export default function ArtistOverview() {
         </div>
         <div className="bg-purple-200 p-4 text-center">Search Placeholder</div>
       </div>
-      <div className="bg-gray-300 p-8 text-center w-full">
+      <div className="bg-gray-300 h-96 p-8 text-center w-full">
         Table Placeholder
       </div>
     </div>
