@@ -28,20 +28,20 @@ export default function ExhibitionOverview() {
       <h1 className="text-4xl font-bold text-center my-10">
       {slug || 'Loading...'}
       </h1>
-      <div className="flex flex-row">
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
+      <div className="flex flex-col space-y-4">
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row space-x-4 flex-auto">
+          <div className="bg-red-200 p-4 text-center">Overview</div>
+          <div className="bg-green-200 p-4 text-center">New </div>
+          <div className="bg-blue-200 p-4 text-center">Excel</div>
+          <div className="bg-yellow-200 p-4 text-center">Add New +</div>
         </div>
-        <div className="basis-1/4">
-          <Image loader={imageLoader} src="150" alt="placeholder" width={150} height={150}/>
-        </div>
-        <div className="basis-1/2">
-          <Image loader={imageLoader} src="300" alt="placeholder" width={300} height={300}/>
-        </div>
-        <div className="flex">
-          {/* table */}
-        </div>
+        <div className="bg-purple-200 p-4 text-center flex-none">Search </div>
       </div>
+      <div className="bg-gray-300 p-8 text-center">
+        Exhibitions Table 
+      </div>
+    </div>
       <div className="flex flex-row justify-end gap-6 p-32">
         <button  onClick={() => router.push('/u/exhibitions/create')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
             Next page

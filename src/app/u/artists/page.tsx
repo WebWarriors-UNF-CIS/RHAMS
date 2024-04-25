@@ -29,20 +29,18 @@ export default function ArtistOverview() {
       <h1 className="text-4xl font-bold text-center my-10">
       {slug || 'Loading...'}
       </h1>
-      <div className="flex flex-row">
-        <div className="basis-1/2">
-          <h1>Search</h1>
+      <div className="flex flex-col space-y-4">
+      <div className="flex justify-between">
+        <div className="flex space-x-4">
+          <div className="bg-red-200 p-4 text-center">Overview Placeholder</div>
+          <div className="bg-yellow-200 p-4 text-center">Add New Placeholder</div>
         </div>
-        
-        <div className="basis-1/2">
-        <button  onClick={() => router.push('/u/artists/create')} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
-            Add Artist
-        </button>
-        </div>
-        <div className="flex">
-          {/* table */}
-        </div>
+        <div className="bg-purple-200 p-4 text-center">Search Placeholder</div>
       </div>
+      <div className="bg-gray-300 p-8 text-center w-full">
+        Table Placeholder
+      </div>
+    </div>
       <div className="flex flex-row justify-end gap-6 p-32">
         <button  onClick={() => router.push('/')} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
             Back
