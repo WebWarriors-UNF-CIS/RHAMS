@@ -59,7 +59,7 @@ export default function Login() {
       <div className="w-1/2 flex flex-none justify-center bg-transparent">
         <div className="w-full max-w-lg flex flex-col items-center bg-b p-12 shadow-xl">
           <div className="m-12 mb-32">
-            <Image alt="RHAMS logo" src={Logo} width={250} height={250} />
+            <Image src={Logo} alt="RHA-Logo" width={250} height={250} />
           </div>
           <form onSubmit={login} className="w-full px-12">
             <div className="mb-12">
