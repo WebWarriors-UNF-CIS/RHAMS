@@ -17,7 +17,6 @@ export const metadata: Metadata =
 {
   title: "The Artwork of Reuban Hale",
   description: "Artwork Management System for The Artwork of Reuban Hale, Inc.",
-  icons: {icon: "../public/images/favicon.ico"},
 };
 
 export default function RootLayout
