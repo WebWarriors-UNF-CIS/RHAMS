@@ -1,14 +1,13 @@
 "use client";
 import Navbar from '../../components/navbar';
-import { useSelectedLayoutSegment } from 'next/navigation';
 
-export default function uLayout({children,}: {children: React.ReactNode;}) {
-    const segment = useSelectedLayoutSegment();
-
+export default function NavbarLayout
+({children,}: {children: React.ReactNode;}) 
+{
     return (
         <>
             <Navbar />
-            <div key={segment}>
+            <div>
                 {children}
             </div>
         </>
