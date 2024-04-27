@@ -1,58 +1,57 @@
 "use client"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { remult } from 'remult';
-import { User } from '@/shared/user';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { CheckIcon } from "@radix-ui/react-icons"
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons"
+import { signIn, SignInResponse } from 'next-auth/react';
 import Image from "next/image";
-import Logo from "../../public/images/logo-w.png";
+import Logo from "../../../public/images/logo-w.png";
 import React from 'react';
-
-
-const userRepo = remult.repo(User);
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const login = async (e: React.FormEvent) => 
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) =>
     {
-    e.preventDefault();
-    try 
-    {
-        userRepo.findFirst({ email: email, password: password }).then((user) => {
-            if (user) {
-              <Alert>
-                <CheckIcon className="h-4 w-4" />
-                <AlertTitle>Login Successful!</AlertTitle>
-              </Alert>
-              router.push('../u/artists');
-            } else {
-              <Alert variant="destructive">
-                <ExclamationTriangleIcon className="h-4 w-4" />
-                <AlertTitle>Login Failed</AlertTitle>
-                <AlertDescription>
-                  Your username or password is invalid. Please try again.
-                </AlertDescription>
-              </Alert>
-            }
-        });
-    } 
-    catch (err) 
-    {<Alert variant="destructive">
-      <ExclamationTriangleIcon className="h-4 w-4" />
-      <AlertTitle>Login Failed</AlertTitle>
-      <AlertDescription>
-        Something went wrong. Please try again.
-      </AlertDescription>
-    </Alert>}
-  };  
+      e.preventDefault(); // Prevent default form submission
+
+      // Try to sign in and handle possible undefined result
+      const result: SignInResponse | undefined = await signIn('credentials', 
+      {
+        redirect: false,
+        email,
+        password,
+      });
+      
+      // Check if the result is defined and handle the result
+      if (result) 
+      {
+        if (result.error) 
+          {
+            <Alert variant="destructive">
+              <ExclamationTriangleIcon className="h-4 w-4" />
+              <AlertTitle>Login Failed</AlertTitle>
+              <AlertDescription>
+                Your username or password is invalid. Please try again.
+              </AlertDescription>
+            </Alert>
+          } 
+          else 
+          {
+            <Alert>
+              <CheckIcon className="h-4 w-4" />
+              <AlertTitle>Login Successful!</AlertTitle>
+            </Alert>
+            router.push('/u/artists'); // Redirect on successful login
+          }
+      }
+  };
   return (
     <div className="flex flex-none h-screen object-contain bg-no-repeat bg-cover bg-center bg-fixed bg-[url('../public/images/abstract-women.jpg')]">
       <div className="w-1/2 bg-transparent"/>
@@ -61,7 +60,7 @@ export default function Login() {
           <div className="m-12 mb-32">
             <Image src={Logo} alt="RHA-Logo" width={250} height={250} />
           </div>
-          <form onSubmit={login} className="w-full px-12">
+          <form onSubmit={handleLogin} className="w-full px-12">
             <div className="mb-12">
               <label htmlFor="email" className="block text-c text-sm font-bold mb-2">Username</label>
               <Input
