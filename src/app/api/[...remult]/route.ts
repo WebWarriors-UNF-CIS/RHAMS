@@ -13,7 +13,8 @@ import { createPostgresDataProvider } from "remult/postgres"
 
 const DATABASE_URL = process.env["POSTGRES_URL"]
 
-const api = remultNextApp({
+const api = remultNextApp
+({
     entities: [Artist, Artwork, Buyer, Collection, Edition, 
                Exhibition, Media, SalesRec, User, ValueList],
     dataProvider: DATABASE_URL
