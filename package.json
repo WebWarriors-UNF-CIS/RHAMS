@@ -60,7 +60,7 @@
     "react-resizable-panels": "^2.0.18",
     "react-select": "^5.8.0",
     "reactstrap": "^9.2.2",
-    "remult": "^0.26.0",
+    "remult": "^0.26.4",
     "sharp": "^0.33.3",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",
