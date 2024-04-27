@@ -92,7 +92,7 @@ export default function Login() {
                     className="text-sm text-c"> Remember Me 
                   </label>
               </div>
-              <button onClick={() => router.push('/login/')} className="text-sm text-c hover:text-a">Forgot Password?</button>
+              <button onClick={() => router.push('/login/artist')} className="text-sm text-c hover:text-a">Forgot Password?</button>
             </div>
             <div className="flex justify-center items-center">
               <Button type="submit" className="bg-a py-2 px-16 rounded text-c">
