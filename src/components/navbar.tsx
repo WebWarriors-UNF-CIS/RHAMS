@@ -41,8 +41,8 @@ const Navbar = () => {
           <div className="relative">
             <DropdownMenu title="Account">
               <DropdownLink name="Current User"  url="/u/profile"  type="default"     icon={User} />
-              <DropdownLink name="User Settings" url="/u/settings" type="default"     icon={Gear} />
-              <DropdownLink name="Logout"        url="/u/logout"   type="destructive" icon={Exit} />
+              <DropdownLink name="User Settings" url="/u/users"    type="default"     icon={Gear} />
+              <DropdownLink name="Logout"        url="../login"    type="destructive" icon={Exit} />
             </DropdownMenu>
           </div>
         </div>
