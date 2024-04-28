@@ -16,6 +16,7 @@ const DATABASE_URL = process.env["POSTGRES_URL"]
 const api = remultNextApp({
     entities: [Artist, Artwork, Buyer, Collection, Edition, 
                Exhibition, Media, SalesRecord, User, ValueList],
+    admin: true,
     dataProvider: DATABASE_URL
     ? createPostgresDataProvider({ connectionString: DATABASE_URL })
     : undefined,
