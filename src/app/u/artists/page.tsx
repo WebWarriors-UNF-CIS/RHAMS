@@ -26,8 +26,7 @@ export default function ArtistsOverview()
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
   const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
-
-  const artistName = (artist: Artist) => artist.lastName + ', ' + artist.firstName;
+  
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
