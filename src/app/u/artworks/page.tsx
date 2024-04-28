@@ -6,6 +6,8 @@ import { remult, EntityFilter} from 'remult';
 import { Artwork } from '../../../shared/artwork';
 import React from 'react';
 import Image from "next/image";
+import { ArtworkData, columns } from "../../../components/ui/columns/artwork-overview"
+import { DataTable } from "@/components/ui/data-table"
 
 const repo = remult.repo<Artwork>(Artwork);
 
@@ -20,8 +22,20 @@ export default function ArtworksOverview()
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
   useEffect(() => 
-  {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
-
+    {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
+  useEffect(() => 
+  {
+    if (pathname)   
+    {
+      const parts = pathname.split('/');
+      setSlug(reformatTitle(parts[2]) + ' ');
+    }
+  }, [pathname]);
+  useEffect(() =>
+    {repo.find({}).then(artworks => setArtworks(artworks))} , [remult]);
+  let entries = artwork.map(artworks => 
+    [ artworks.title, artworks.artist, artworks.releaseDate, artworks.thumbnail, artworks.description, artworks.types, artworks.mediums, artworks.measurements, artworks.notes, artworks.inPortfolioBook, artworks.editions, artworks.exhibitions]);
+    const data = Object.fromEntries(entries);
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center my-10">
@@ -38,7 +52,7 @@ export default function ArtworksOverview()
         <div className="bg-purple-200 p-4 text-center flex-none">Search </div>
       </div>
       <div className="bg-gray-300 h-96 p-8 text-center">
-        Artworks Table 
+      <DataTable columns={columns} data={data}/>
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">

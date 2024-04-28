@@ -6,6 +6,10 @@ import { remult, EntityFilter} from 'remult';
 import { Exhibition } from '../../../shared/exhibition';
 import React from 'react';
 import Image from "next/image";
+import { ExhibitionData, columns } from "../../../components/ui/columns/exhibition-overview";
+import { DataTable } from "../../../components/ui/data-table";
+import e from 'express';
+
 
 const repo = remult.repo<Exhibition>(Exhibition);
 
@@ -21,6 +25,12 @@ export default function ExhibitionsOverview()
   {return input.charAt(0).toUpperCase() + input.slice(1);}
   useEffect(() => 
   {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
+  useEffect(() =>
+    {repo.find({}).then(exhibits => setExhibits(exhibits))} , [remult]);
+  
+  let entries = exhibit.map(exhibit => 
+    [exhibit.id, exhibit, exhibit.venueNames, exhibit.venueLocation, exhibit.loadInDate, exhibit.startDate, exhibit.endDate, exhibit.artists, exhibit.artworks, exhibit.notes]);
+    const data = Object.fromEntries(entries);
 
   return (
     <div className="container mx-auto px-4">
@@ -38,7 +48,7 @@ export default function ExhibitionsOverview()
         <div className="bg-purple-200 p-4 text-center flex-none">Search </div>
       </div>
       <div className="bg-gray-300 h-96 p-8 text-center">
-        Exhibitions Table 
+        <DataTable columns={columns} data={data}/>
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">
