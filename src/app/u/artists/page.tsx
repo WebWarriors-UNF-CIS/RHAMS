@@ -46,7 +46,7 @@ export default function ArtistsOverview()
  
     
   let entries = artist.map(artist => 
-    [artist.id, artist, artist.thumbnail, 
+    [artist.ID, artist, artist.thumbnail, 
       artist.firstName, artist.lastName, 
       artist.bio, artist.birthDate, artist.deathDate, 
       artist.birthLocation, artist.deathLocation, 
