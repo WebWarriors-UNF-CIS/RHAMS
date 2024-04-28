@@ -24,7 +24,7 @@ export default function CollectionsOverview()
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center my-10">
+      <h1 className="text-5xl text-b font-bold text-left ml-5 my-10">
       {slug || 'Loading...'}
       </h1>
       <div className="container mx-auto p-6">

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import React from 'react';
 
-export default function MediaClipOverview() {
+export default function MediaOverview() {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
@@ -25,7 +25,7 @@ export default function MediaClipOverview() {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center my-10">
+      <h1 className="text-5xl text-b font-bold text-left ml-5 my-10">
       {slug || 'Loading...'}
       </h1>
       <div className="flex flex-row">

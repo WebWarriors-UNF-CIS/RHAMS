@@ -29,12 +29,12 @@ export default function ExhibitionsOverview()
     {repo.find({}).then(exhibits => setExhibits(exhibits))} , [remult]);
   
   let entries = exhibit.map(exhibit => 
-    [exhibit.id, exhibit, exhibit.venueNames, exhibit.venueLocation, exhibit.loadInDate, exhibit.startDate, exhibit.endDate, exhibit.artists, exhibit.artworks, exhibit.notes]);
+    [exhibit.ID, exhibit, exhibit.venueNames, exhibit.venueLocation, exhibit.loadInDate, exhibit.startDate, exhibit.endDate, exhibit.notes]);
     const data = Object.fromEntries(entries);
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center my-10">
+      <h1 className="text-5xl text-b font-bold text-left ml-5 my-10">
       {slug || 'Loading...'}
       </h1>
       <div className="flex flex-col space-y-4">

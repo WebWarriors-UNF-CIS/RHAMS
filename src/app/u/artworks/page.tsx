@@ -34,11 +34,11 @@ export default function ArtworksOverview()
   useEffect(() =>
     {repo.find({}).then(artworks => setArtworks(artworks))} , [remult]);
   let entries = artwork.map(artworks => 
-    [ artworks.title, artworks.artist, artworks.releaseDate, artworks.thumbnail, artworks.description, artworks.types, artworks.mediums, artworks.measurements, artworks.notes, artworks.inPortfolioBook, artworks.editions, artworks.exhibitions]);
+    [ artworks.ID, artworks.title, artworks.artist, artworks.releaseDate, artworks.thumbnail, artworks.description, artworks.types, artworks.mediums, artworks.measurements, artworks.notes, artworks.inPortfolioBook, artworks.numEditions ]);
     const data = Object.fromEntries(entries);
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center my-10">
+      <h1 className="text-5xl text-b font-bold text-left ml-5 my-10">
       {slug || 'Loading...'}
       </h1>
       <div className="flex flex-col space-y-4">
