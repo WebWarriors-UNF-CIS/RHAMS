@@ -10,37 +10,37 @@ export class SalesRecord
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.cuid()          // Maybe use an invoice number instead of a cuid?
-    invoiceNum = ''
+    @Fields.number()        // Maybe use an invoice number instead of a cuid?
+    invoiceNum!: number;
     @Fields.createdAt()     // The date and time this SalesRecord entity was created
-    createdAt = new Date()
+    createdAt!: Date;
     @Fields.updatedAt()     // The date and time this SalesRecord entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
     @Relations.toOne(() => Edition)
-    edition?: Edition;
+    edition!: Edition;
 
     @Relations.toOne(() => Buyer)
-    buyer?: Buyer;
+    buyer!: Buyer;
 
     @Relations.toOne(() => Collection)
-    collection?: Collection;
+    collection!: Collection;
 
     @Fields.json()
     foundry: any [] = [];
 
     @Fields.number()
-    priceFromFoundary = 0;
+    priceFromFoundary!: number;
 
     @Fields.number()
-    priceToBuyer = 0;
+    priceToBuyer!: number;
 
     @Fields.dateOnly()
-    saleDate = new Date();
+    saleDate!: Date;
 
     @Fields.string()
-    notes = '';
+    notes?: string;
 
     async setFoundry(foundryKey: string)
     {this.foundry = await fetchValueListByCategory("Foundry", remult);}

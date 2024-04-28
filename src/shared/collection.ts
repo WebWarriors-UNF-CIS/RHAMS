@@ -1,6 +1,6 @@
 import { Entity, Fields, Relations, remult } from 'remult'
 import { Buyer } from './buyer'
-import { Edition } from './edition'
+import { EdC } from './inter/edc'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 export enum AcquisitionMethod
@@ -19,15 +19,15 @@ export class Collection
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.cuid()          // A unique identifier for the Collection entity
-    id = ''
+    id!: number;
     @Fields.createdAt()     // The date and time this Collection entity was created
-    createdAt = new Date()
+    createdAt!: Date;
     @Fields.updatedAt()     // The date and time this Collection entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
     @Fields.string()
-    name = '';
+    name!: string;
 
     @Relations.toOne(() => Buyer)
     owner?: Buyer;
@@ -39,13 +39,13 @@ export class Collection
     location?: any [] = [];
 
     @Fields.dateOnly()
-    acquisitionDate = new Date();
+    acquisitionDate!: Date;
 
     @Fields.string({ allowNull: true })
-    notes = '';
+    notes?: string;
 
-    @Relations.toMany(() => Edition)
-    editions?: Edition[];
+    @Relations.toMany(() => EdC, 'collections')
+    editions?: EdC[];
 
     async setCollectionLocation(locationsKey: string) 
     {this.location = await fetchValueListByCategory("Location", remult)}

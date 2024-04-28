@@ -1,6 +1,6 @@
 import { Entity, Fields, Relations, remult } from 'remult'
 import { Collection } from './collection'
-import { SalesRecord } from './salesrecord'
+import { sBu } from './inter/sbu'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 @Entity('buyer', { allowApiCrud: true })
@@ -10,18 +10,18 @@ export class Buyer
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.cuid()          // A unique identifier for the Buyer entity
-    id = ''
+    id!: number;
     @Fields.createdAt()     // The date and time this Buyer entity was created
-    createdAt = new Date()
+    createdAt!: Date;
     @Fields.updatedAt()     // The date and time this Buyer entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
     @Fields.string()
-    lastName = '';
+    lastName!: string;
 
     @Fields.string()
-    firstName = '';
+    firstName!: string;
 
     @Fields.json()
     location?: any[] = [];
@@ -29,14 +29,14 @@ export class Buyer
     @Fields.json()
     contactInfo: { address?: string; phone?: string; email?: string } = {};
 
-    @Fields.string({ allowNull: true })
-    notes = '';
+    @Fields.string()
+    notes?: string;
 
-    @Relations.toMany(() => Collection)
+    @Relations.toMany(() => Collection, 'owner')
     collections?: Collection[];
 
-    @Relations.toMany(() => SalesRecord)
-    salesRecords?: SalesRecord[];
+    @Relations.toMany(() => sBu, 'buyers')
+    salesRecords?: sBu[];
 
     async setBuyerLocation(locationsKey: string) 
     {this.location = await fetchValueListByCategory("Location", remult)}

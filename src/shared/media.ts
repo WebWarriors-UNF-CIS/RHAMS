@@ -1,8 +1,8 @@
 import { Entity, Fields, Relations, remult } from 'remult'
-import { Artist } from './artist'
-import { Artwork } from './artwork'
-import { Collection } from './collection'
-import { Exhibition } from './exhibition'
+import { mAr } from './inter/mar';
+import { mAw } from './inter/maw';
+import { mCo } from './inter/mco';
+import { mEx } from './inter/mex';
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 @Entity('media', { allowApiCrud: true })
@@ -12,27 +12,27 @@ export class Media
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.cuid()          // A unique identifier for the Media entity
-    id = ''
+    id!: number;
     @Fields.createdAt()     // The date and time this Media entity was created
-    createdAt = new Date()
+    createdAt!: Date;
     @Fields.updatedAt()     // The date and time this Media entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
     @Fields.dateOnly()
-    publicationDate = new Date();
+    publicationDate?: Date;
 
     @Fields.string()
-    thumbnail = '';
+    thumbnail?: string;
 
     @Fields.string()
-    location = '';
+    location?: string;
 
     @Fields.string()
-    title = '';
+    title!: string;
 
     @Fields.string()
-    description = '';
+    description?: string;
 
     @Fields.json()
     authors: any [] = [];
@@ -44,22 +44,22 @@ export class Media
     mediaTypes: any [] = [];
 
     @Fields.string()
-    url = '';
+    url?: string;
 
     @Fields.string({ allowNull: true })
-    notes = '';
+    notes?: string;
 
-    @Relations.toMany(() => Artist)
-    artists?: Artist[];
+    @Relations.toMany(() => mAr, 'media')
+    artists?: mAr[];
 
-    @Relations.toMany(() => Artwork)
-    artworks?: Artwork[];
+    @Relations.toMany(() => mAw, 'media')
+    artworks?: mAw[];
 
-    @Relations.toMany(() => Collection)
-    collections?: Collection[];
+    @Relations.toMany(() => mCo, 'media')
+    collections?: mCo[];
 
-    @Relations.toMany(() => Exhibition)
-    exhibitions?: Exhibition[];
+    @Relations.toMany(() => mEx, 'media')
+    exhibitions?: mEx[];
 
     async setAuthors(authorsKey: string)
     {this.authors = await fetchValueListByCategory("Author", remult)}

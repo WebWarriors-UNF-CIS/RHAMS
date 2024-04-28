@@ -1,6 +1,6 @@
 import { Entity, Fields, Relations, remult } from 'remult';
 import { Artwork } from './artwork';
-import { Exhibition } from './exhibition';
+import { xAr } from './inter/xar';
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 @Entity('artist', { allowApiCrud: true })
@@ -10,45 +10,45 @@ export class Artist
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.cuid()          // A unique identifier for the Artist entity
-    id = ''
+    id!: number;
     @Fields.createdAt()     // The date and time this Artist entity was created
-    createdAt = new Date()
+    createdAt!: Date;
     @Fields.updatedAt()     // The date and time this Artist entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
     @Fields.string()
-    lastName = '';
+    lastName!: string;
 
     @Fields.string()
-    firstName = '';
+    firstName!: string;
 
-    @Fields.dateOnly({ allowNull: true })
+    @Fields.dateOnly()
     birthDate?: Date;
 
-    @Fields.dateOnly({ allowNull: true })
+    @Fields.dateOnly()
     deathDate?: Date;
 
-    @Fields.json({ allowNull: true })
+    @Fields.json()
     birthLocation?: any[] = [];
 
-    @Fields.json({ allowNull: true })
+    @Fields.json()
     deathLocation?: any[] = [];
 
     @Fields.string()
-    thumbnail = '';
+    thumbnail?: string;
 
-    @Fields.string({ allowNull: true })
-    bio = '';
+    @Fields.string()
+    bio?: string
 
-    @Fields.string({ allowNull: true })
-    notes = '';
+    @Fields.string()
+    notes?: string
 
     @Relations.toMany(() => Artwork)
     artworks?: Artwork[];
 
-    @Relations.toMany(() => Exhibition)
-    exhibitions?: Exhibition[]; 
+    @Relations.toMany(() => xAr, 'artists')
+    exhibitions?: xAr[]; 
 
     async setBirthLocation(locationsKey: string) 
     {this.birthLocation = await fetchValueListByCategory("Location", remult)}

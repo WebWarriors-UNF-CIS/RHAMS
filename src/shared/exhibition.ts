@@ -1,5 +1,5 @@
 import { Entity, Fields, Relations, remult } from 'remult'
-import { Artist } from './artist'
+import { xAr } from './inter/xar'
 import { Artwork } from './artwork'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
@@ -9,16 +9,16 @@ export class Exhibition
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.string()        // A unique identifier for the Exhibition entity
+    @Fields.string()        // A unique identifier for the Exhibition entity (Ex001, Ex002, etc.)
     id!: string;
     @Fields.createdAt()     // The date and time this Exhibition entity was created
-    createdAt = new Date()
+    createdAt!: Date;
     @Fields.updatedAt()     // The date and time this Exhibition entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
   @Fields.string()
-  title = '';
+  title!: string;
 
   @Fields.json()
   venueNames: any [] = [];
@@ -27,22 +27,22 @@ export class Exhibition
   venueLocation: any [] = [];
 
   @Fields.dateOnly()
-  loadInDate = new Date();
+  loadInDate?: Date;
 
   @Fields.dateOnly()
-  startDate = new Date();
+  startDate!: Date;
 
   @Fields.dateOnly()
-  endDate = new Date();
+  endDate!: Date;
 
-  @Relations.toMany(() => Artist)
-  artists?: Artist[];
+  @Relations.toMany(() => xAr, 'exhibitions')
+  artists!: xAr[];
 
   @Relations.toMany(() => Artwork)
   artworks?: Artwork[];
 
   @Fields.string({ allowNull: true })
-  notes = '';
+  notes?: string;
 
   async setVenueLocation(locationsKey: string) 
   {this.venueLocation = await fetchValueListByCategory("Location", remult)}

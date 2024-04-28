@@ -1,6 +1,7 @@
 import { Entity, Fields, Relations, remult } from 'remult'
 import { Artist } from './artist'
 import { Edition } from './edition'
+import { xAw } from './inter/xaw'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 @Entity('artwork', { allowApiCrud: true })
@@ -10,27 +11,27 @@ export class Artwork
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.integer()       // A unique identifier for the Artwork entity
-    catalogId = ''
+    catalogId!: number;
     @Fields.createdAt()     // The date and time this Artwork entity was created 
-    createdAt = new Date()
+    createdAt!: Date;
     @Fields.updatedAt()     // The date and time this Artwork entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
   
     @Fields.string()
-    title = '';
+    title!: string;
 
-    @Relations.toOne(() => Artist)
-    artist?: Artist;
+    @Relations.toOne(() => Artist, 'artworks')
+    artist!: Artist;
 
     @Fields.dateOnly()
-    releaseDate = new Date();
+    releaseDate?: Date;
 
     @Fields.string()
-    thumbnail = '';
+    thumbnail?: string;
 
     @Fields.string()
-    description = '';
+    description?: string;
 
     @Fields.json()
     types: any[] = [];
@@ -41,14 +42,17 @@ export class Artwork
     @Fields.json()
     measurements: { height?: number; width?: number; depth?: number } = {};
 
-    @Fields.string({ allowNull: true })
-    notes = '';
+    @Fields.string()
+    notes?: string;
 
     @Fields.boolean()
-    inPortfolioBook = false;
+    inPortfolioBook!: boolean;
 
-    @Relations.toMany(() => Edition)
+    @Relations.toMany(() => Edition , 'parentArtwork')
     editions?: Edition[];
+
+    @Relations.toMany(() => xAw, 'artworks')
+    exhibitions?: xAw[];
 
     async setMedium(mediumKey: string) 
     {this.mediums = await fetchValueListByCategory("Medium", remult);}
