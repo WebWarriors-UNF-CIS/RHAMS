@@ -3,7 +3,7 @@ import { Artwork } from './artwork';
 import { Buyer } from './buyer';
 import { Collection } from './collection';
 import { Exhibition } from './exhibition';
-import { SalesRecord } from './salesrec';
+import { SalesRecord } from './salesrecord';
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 

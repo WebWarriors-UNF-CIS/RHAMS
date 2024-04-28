@@ -7,7 +7,7 @@ import { Edition } from "../../../shared/edition"
 import { Exhibition } from "../../../shared/exhibition"
 import { ValueList } from "../../../shared/valuelist"
 import { Media } from "../../../shared/media"
-import { SalesRec } from "../../../shared/salesrec"
+import { SalesRec } from "../../../shared/salesrecord"
 import { User } from "../../../shared/user"
 import { createPostgresDataProvider } from "remult/postgres"
 

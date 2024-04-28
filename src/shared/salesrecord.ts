@@ -4,7 +4,7 @@ import { Buyer } from './buyer'
 import { Collection } from './collection'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
-@Entity('salesrec', { allowApiCrud: true })
+@Entity('salesrecord', { allowApiCrud: true })
 export class SalesRecord 
 {
   //\\//\\//\\|//\\//\\//\\

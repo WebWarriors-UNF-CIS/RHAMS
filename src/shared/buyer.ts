@@ -1,6 +1,6 @@
 import { Entity, Fields, Relations, remult } from 'remult'
 import { Collection } from './collection'
-import { SalesRecord } from './salesrec'
+import { SalesRecord } from './salesrecord'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 @Entity('buyer', { allowApiCrud: true })
