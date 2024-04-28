@@ -40,9 +40,9 @@ const Navbar = () => {
           </div>
           <div className="relative">
             <DropdownMenu title="Account">
-              <DropdownLink name="Current User"  url="/u/profile"  type="default"     icon={User} />
-              <DropdownLink name="User Settings" url="/u/users"    type="default"     icon={Gear} />
-              <DropdownLink name="Logout"        url="../login"    type="destructive" icon={Exit} />
+              <DropdownLink name="Current User"  url="/u/users/profile"  type="default"     icon={User} />
+              <DropdownLink name="User Settings" url="/u/users"          type="default"     icon={Gear} />
+              <DropdownLink name="Logout"        url="../login"          type="destructive" icon={Exit} />
             </DropdownMenu>
           </div>
         </div>
