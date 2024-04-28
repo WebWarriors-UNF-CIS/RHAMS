@@ -9,6 +9,8 @@ import { Button } from '../../../components/ui/button';
 import React from 'react';
 import Image from "next/image";
 import Link from 'next/link';
+import { ArtistData, columns } from "./columns"
+import { DataTable } from "@/components/ui/data-table"
 
 
 const repo = remult.repo<Artist>(Artist);
@@ -29,6 +31,14 @@ export default function ArtistsOverview()
     {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
   useEffect(() => 
     {repo.find({}).then(artists => setArtists(artists))} , [remult]);
+  let entries = artist.map(artist => 
+    [artist.id, artist, artist.thumbnail, 
+      artist.firstName, artist.lastName, 
+      artist.bio, artist.birthDate, artist.deathDate, 
+      artist.birthLocation, artist.deathLocation, 
+      artist.notes, artist.artworks, artist.exhibitions]);
+    const data = Object.fromEntries(entries);
+    
   
   return (
     <div className="container mx-auto px-4">
@@ -44,27 +54,11 @@ export default function ArtistsOverview()
         <div className="bg-purple-200 p-4 text-center">Search Placeholder</div>
       </div>
       <div className="bg-gray-300 h-96 p-8 text-center w-full">
-      <div>
-        {artist.map(artist => (
-          <div className="flex flex-row grid-cols-4 " key={artist.id}>
-            <Card>
-              <Image loader={imageLoader} src={artist.thumbnail} alt={artist.firstName + " " + artist.lastName} width={200} height={100} />
-              <CardHeader>
-                <CardTitle>{artistName(artist)}</CardTitle>
-                <CardDescription>{artist.bio}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p>Card Content</p>
-              </CardContent>
-              <CardFooter>
-                <Button className="bg-a py-2 px-16 rounded text-c">
-                  <Link href="/u/artists"> View Details </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
-        ))}
-      </div>
+      
+      <div className="container mx-auto py-10">
+      <DataTable columns={columns} data={data} />
+    </div>
+        
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">
