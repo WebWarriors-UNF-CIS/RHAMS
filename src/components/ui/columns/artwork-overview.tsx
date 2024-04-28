@@ -26,7 +26,12 @@ export const columns: ColumnDef<ArtworkData>[] = [
     {
         accessorKey: "acquired",
         header: "Acquired",
-    },
+        cell: ({ row }) => {
+          const date = new Date(row.getValue("acquired"))
+          const formatted = date.toLocaleDateString() 
+          return <div className="font-medium">{formatted}</div>  
+            }
+          },
     {
         accessorKey: "medium",
         header: "Medium",
