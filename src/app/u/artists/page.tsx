@@ -9,7 +9,7 @@ import { Button } from '../../../components/ui/button';
 import React from 'react';
 import Image from "next/image";
 import Link from 'next/link';
-import { ArtistData, columns } from "./columns"
+import { ArtistData, columns } from "../../../components/ui/columns/artist-overview"
 import { DataTable } from "@/components/ui/data-table"
 
 
