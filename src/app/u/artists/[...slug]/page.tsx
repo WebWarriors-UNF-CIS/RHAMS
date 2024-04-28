@@ -5,8 +5,6 @@ import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import React from 'react';
 import Creatable from 'react-select/creatable';
-import { ArtistData, columns } from "@/components/ui/columns/artist-overview"
-import { DataTable } from "@/components/ui/data-table"
 
 export default function ArtistDetail() {
   const router = useRouter();

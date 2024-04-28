@@ -16,5 +16,9 @@ export const columns: ColumnDef<ArtistData>[] = [
   {
     accessorKey: "firstName",
     header: "First Name",
-  }
+  },
+  {
+    accessorKey: "amount",
+    header: "Amount",
+  },
 ]
