@@ -15,7 +15,7 @@ export default function ArtworksOverview()
   const [artwork, setArtworks] = useState<Artwork[]>([]);
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
-  const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
+  const imageLoader = ({src}: {src: string}) => {return `https://picsum.photos/${src}`}
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
