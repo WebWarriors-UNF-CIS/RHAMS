@@ -7,7 +7,7 @@ import { Edition } from "../../../shared/edition"
 import { Exhibition } from "../../../shared/exhibition"
 import { ValueList } from "../../../shared/valuelist"
 import { Media } from "../../../shared/media"
-import { SalesRec } from "../../../shared/salesrecord"
+import { SalesRecord } from "../../../shared/salesrecord"
 import { User } from "../../../shared/user"
 import { createPostgresDataProvider } from "remult/postgres"
 
@@ -15,7 +15,7 @@ const DATABASE_URL = process.env["POSTGRES_URL"]
 
 const api = remultNextApp({
     entities: [Artist, Artwork, Buyer, Collection, Edition, 
-               Exhibition, Media, SalesRec, User, ValueList],
+               Exhibition, Media, SalesRecord, User, ValueList],
     dataProvider: DATABASE_URL
     ? createPostgresDataProvider({ connectionString: DATABASE_URL })
     : undefined,
