@@ -4,7 +4,7 @@ import { Entity, Fields } from 'remult'
 export class ValueList 
 {
   @Fields.cuid()                            // A unique identifier for the list entity, could be combine with category to make it easy to find the list
-  id = ''
+  ID = ''
 
   @Fields.string({ caption: "Category" })   // e.g., 'medium', 'material', 'location', 'foundary', etc.
   category: string = ''

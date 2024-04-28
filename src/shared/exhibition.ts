@@ -8,7 +8,7 @@ export class Exhibition
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.string()        // A unique identifier for the Exhibition entity (Ex001, Ex002, etc.)
+    @Fields.string()        
     ID!: string;
     @Fields.createdAt()     // The date and time this Exhibition entity was created
     createdAt!: Date;
@@ -16,6 +16,9 @@ export class Exhibition
     updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
+  @Fields.number()
+  exID!: number;
+  
   @Fields.string()
   title!: string;
 

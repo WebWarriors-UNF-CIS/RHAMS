@@ -8,11 +8,11 @@ export class Buyer
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.cuid()          // A unique identifier for the Buyer entity
+    @Fields.cuid()
     ID!: number;
-    @Fields.createdAt()     // The date and time this Buyer entity was created
+    @Fields.createdAt()
     createdAt!: Date;
-    @Fields.updatedAt()     // The date and time this Buyer entity was last updated
+    @Fields.updatedAt()
     updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 

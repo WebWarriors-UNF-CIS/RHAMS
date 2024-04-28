@@ -7,11 +7,11 @@ export class Media
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.cuid()          // A unique identifier for the Media entity
+    @Fields.cuid()
     ID!: number;
-    @Fields.createdAt()     // The date and time this Media entity was created
+    @Fields.createdAt()
     createdAt!: Date;
-    @Fields.updatedAt()     // The date and time this Media entity was last updated
+    @Fields.updatedAt()
     updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 

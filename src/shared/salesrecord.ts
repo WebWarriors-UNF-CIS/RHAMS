@@ -10,8 +10,8 @@ export class SalesRecord
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.number()        // Maybe use an invoice number instead of a cuid?
-    invoiceNumber!: number;
+    @Fields.cuid()        // Maybe use an invoice number instead of a cuid?
+    ID!: number;
     @Fields.createdAt()     // The date and time this SalesRecord entity was created
     createdAt!: Date;
     @Fields.updatedAt()     // The date and time this SalesRecord entity was last updated

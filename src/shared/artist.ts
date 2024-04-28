@@ -8,11 +8,11 @@ export class Artist
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.cuid()          // A unique identifier for the Artist entity
-    id!: number;
-    @Fields.createdAt()     // The date and time this Artist entity was created
+    @Fields.cuid() 
+    ID!: number;
+    @Fields.createdAt()
     createdAt!: Date;
-    @Fields.updatedAt()     // The date and time this Artist entity was last updated
+    @Fields.updatedAt()
     updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 

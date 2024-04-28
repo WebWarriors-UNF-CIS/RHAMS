@@ -23,19 +23,25 @@ export class Edition
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\  
-    @Fields.string()        // Compound ID, Artwork catalog number and the Edition number represented as a letter (i.e. '001-AA, 001-AB, etc.')        
-    ID!: string;                          
-    @Fields.createdAt()     // The date and time this Edition entity was created
+    @Fields.cuid()              
+    ID!: number;                          
+    @Fields.createdAt()
     createdAt!: Date;
-    @Fields.updatedAt()     // The date and time this Edition entity was last updated
+    @Fields.updatedAt()
     updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
 
+    @Fields.string()
+    edID!: string;          // Compound ID, Artwork catalog number and the Edition number represented as a letter (i.e. '001-AA, 001-AB, etc.')
+    
+    @Fields.string()
+    editionLetter!: string; // The letter representing the Edition number (i.e. 'AA', 'AB', etc.)
+
+    @Fields.number()
+    totalEditions!: number;
+
     @Relations.toOne(() => Artwork)
     parentArtwork?: Artwork;
-
-    @Fields.string()
-    editionNumber!: string;
 
     @Fields.json()
     foundry?: any [] = [];
@@ -70,13 +76,10 @@ export class Edition
     @Fields.boolean()
     forSale!: boolean;
 
-    @Relations.toMany(() => SalesRecord, 
-    {
-      field: "invoiceNumber",
-      defaultIncluded: true
-    })
-    salesHistory?: SalesRecord[];
+    //@Relations.toMany
+    //salesHistory?: SalesRecord[];
 
+    /*/
     get lastSaleDate(): Date | undefined 
     {
       if (!this.salesHistory || this.salesHistory.length === 0) 
@@ -85,9 +88,10 @@ export class Edition
           .map(record => record.saleDate)
           .sort((a, b) => b.getTime() - a.getTime())[0];
     }
-
+    /*/
+    
     generateCompoundID(catalogId: string, editionLetter: string) 
-    {this.ID = `${catalogId}-${editionLetter}`}
+    {this.edID = `${catalogId}-${editionLetter}`}
 
     async setFoundry(foundryKey: string)
     {this.foundry = await fetchValueListByCategory("Foundry", remult);}

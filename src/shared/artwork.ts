@@ -9,14 +9,17 @@ export class Artwork
   //\\//\\//\\|//\\//\\//\\
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
-    @Fields.integer()       // A unique identifier for the Artwork entity
-    catalogID!: number;
-    @Fields.createdAt()     // The date and time this Artwork entity was created 
+    @Fields.cuid()
+    ID!: number;
+    @Fields.createdAt()
     createdAt!: Date;
-    @Fields.updatedAt()     // The date and time this Artwork entity was last updated
+    @Fields.updatedAt()
     updatedAt!: Date;
   //\\//\\//\\|//\\//\\//\\
-  
+
+    @Fields.number()
+    catalogNumber!: number;
+    
     @Fields.string()
     title!: string;
 
@@ -41,22 +44,31 @@ export class Artwork
     @Fields.json()
     measurements: { height?: number; width?: number; depth?: number } = {};
 
+    @Fields.number()
+    numEditions!: number;
+
     @Fields.string()
     notes?: string;
 
     @Fields.boolean()
     inPortfolioBook!: boolean;
 
-    @Relations.toMany(() => Edition, 
-    {
-      field: "ID",
-      defaultIncluded: true
-    })
-    editions?: Edition[];
+    //@Relations.toMany(() => Edition, 
+    //editions?: Edition[];
 
     //@Relations.toMany
     //featuredIn?: Exhibition[];
 
+    /*/ Function to call and create editions based on local variable numEditions \*\
+    async createEditions(numEditions: number) 
+    {
+        for (let i = 0; i < numEditions; i++) 
+        {
+            let edition = new Edition()
+            edition.save();
+        }
+    }
+    /*/
     async setMedium(mediumKey: string) 
     {this.mediums = await fetchValueListByCategory("Medium", remult);}
 
