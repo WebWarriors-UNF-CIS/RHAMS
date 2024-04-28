@@ -2,26 +2,25 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import Image from "next/image";
+import { remult, EntityFilter} from 'remult';
+import { Exhibition } from '../../../shared/exhibition';
 import React from 'react';
+import Image from "next/image";
 
-export default function ExhibitionOverview() {
+const repo = remult.repo<Exhibition>(Exhibition);
+
+export default function ExhibitionsOverview() 
+{
   const router = useRouter();
+  const [exhibit, setExhibits] = useState<Exhibition[]>([]);
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
   const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
-
   useEffect(() => 
-  {
-    if (pathname)   
-    {
-      const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[2]) + ' Placeholder Page');
-    }
-  }, [pathname]);
+  {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
 
   return (
     <div className="container mx-auto px-4">

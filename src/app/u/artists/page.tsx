@@ -2,28 +2,34 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import Image from "next/image";
+import { remult, EntityFilter} from 'remult';
+import { Artist } from '../../../shared/artist';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../../../components/ui/card';
+import { Button } from '../../../components/ui/button';
 import React from 'react';
-import Creatable from 'react-select/creatable';
+import Image from "next/image";
+import Link from 'next/link';
 
-export default function ArtistOverview() {
+
+const repo = remult.repo<Artist>(Artist);
+
+export default function ArtistsOverview() 
+{
   const router = useRouter();
+  const [artist, setArtists] = useState<Artist[]>([]);
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
   const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
 
+  const artistName = (artist: Artist) => artist.lastName + ', ' + artist.firstName;
+
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
-
   useEffect(() => 
-  {
-    if (pathname)   
-    {
-      const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[2]) + ' ');
-    }
-  }, [pathname]);
-
+    {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
+  useEffect(() => 
+    {repo.find({}).then(artists => setArtists(artists))} , [remult]);
+  
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center my-10">
@@ -38,7 +44,27 @@ export default function ArtistOverview() {
         <div className="bg-purple-200 p-4 text-center">Search Placeholder</div>
       </div>
       <div className="bg-gray-300 h-96 p-8 text-center w-full">
-        Table Placeholder
+      <div>
+        {artist.map(artist => (
+          <div className="flex flex-row grid-cols-4 " key={artist.id}>
+            <Card>
+              <Image loader={imageLoader} src={artist.thumbnail} alt={artist.firstName + " " + artist.lastName} width={200} height={100} />
+              <CardHeader>
+                <CardTitle>{artistName(artist)}</CardTitle>
+                <CardDescription>{artist.bio}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card Content</p>
+              </CardContent>
+              <CardFooter>
+                <Button className="bg-a py-2 px-16 rounded text-c">
+                  <Link href="/u/artists"> View Details </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+        ))}
+      </div>
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">
