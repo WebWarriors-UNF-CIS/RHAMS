@@ -2,15 +2,17 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import { remult, EntityFilter} from 'remult';
 import { Artist } from '../../../shared/artist';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
 import React from 'react';
 import Image from "next/image";
+import Creatable from 'react-select/creatable';
 import Link from 'next/link';
 import { ArtistData, columns } from "../../../components/ui/columns/artist-overview"
 import { DataTable } from "@/components/ui/data-table"
+import { remult, EntityFilter} from 'remult';
+
 
 
 const repo = remult.repo<Artist>(Artist);
@@ -22,6 +24,7 @@ export default function ArtistsOverview()
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
   const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
+  
 
   const artistName = (artist: Artist) => artist.lastName + ', ' + artist.firstName;
 
@@ -30,7 +33,18 @@ export default function ArtistsOverview()
   useEffect(() => 
     {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
   useEffect(() => 
+  {
+    if (pathname)   
+    {
+      const parts = pathname.split('/');
+      setSlug(reformatTitle(parts[2]) + ' ');
+    }
+  }, [pathname]);
+  useEffect(() =>
     {repo.find({}).then(artists => setArtists(artists))} , [remult]);
+  
+ 
+    
   let entries = artist.map(artist => 
     [artist.id, artist, artist.thumbnail, 
       artist.firstName, artist.lastName, 
@@ -53,6 +67,7 @@ export default function ArtistsOverview()
         </div>
         <div className="bg-purple-200 p-4 text-center">Search Placeholder</div>
       </div>
+      <DataTable columns={columns} data={data} />
       <div className="bg-gray-300 h-96 p-8 text-center w-full">
       
       <div className="container mx-auto py-10">
