@@ -1,5 +1,5 @@
 import { Remult } from "remult";
-import { ValueList } from "../shared/valuelist";
+import { ValueList } from "../shared/entutils/valuelist";
 
 export async function fetchValueListByCategory(category: string, remult: Remult): Promise<any[]> 
 {
