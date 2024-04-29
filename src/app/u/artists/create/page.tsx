@@ -14,8 +14,19 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 
+
 const formSchema = z.object({
-  emailAddress: z.string().email(),
+  firstName: z.string().nonempty(),
+  lastName: z.string().nonempty(),
+  dateOfBirth: z.date(),
+  birthLocation: z.string(),
+  dateOfDeath: z.date(),
+  deathLocation: z.string(),
+  placesLived: z.string(),
+  imageURL: z.string(),
+  website: z.string(),
+  bio: z.string(),
+  notes: z.string(),
 })
 
 export default function CreateArtist() {
@@ -27,7 +38,18 @@ export default function CreateArtist() {
   const form = useForm<z.infer <typeof formSchema>>({
     resolver: zodResolver(formSchema)});
     defaultValues: {
-      emailAddress: ''}
+      firstName: ''
+      lastName: ''
+      dateOfBirth: ''
+      birthLocation: ''
+      dateOfDeath: ''
+      deathLocation: ''
+      placesLived: ''
+      imageURL: ''
+      website: ''
+      bio: ''
+      notes: ''
+    }
   
 
   function reformatTitle(input: string) 
@@ -59,19 +81,56 @@ export default function CreateArtist() {
           className="max-w-md w-full flex flex-col gap-4">
             <FormField 
               control={form.control} 
-              name="emailAddress" 
+              name="firstName" 
               render={({ field }) => {
                       return (
                         <FormItem>
-                          <FormLabel>Email Address</FormLabel>
+                          <FormLabel>First Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Email Address" type="email"{...field} />
+                            <Input placeholder="First Name" type="string"{...field} />
                           </FormControl>
                           <FormMessage/>
                         </FormItem>
                       );
                     }}
-                  />
+            />
+            
+            <FormField 
+              control={form.control} 
+              name="lastName" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Last Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Last Name" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+              />
+            <FormField 
+              control={form.control} 
+              name="dateOfBirth" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Date of Birth</FormLabel>
+                          <FormControl>
+                            
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+
+
+
+
+
+
                   <Button type="submit" className="w-full">Submit</Button>
                 </form>
         </Form>
