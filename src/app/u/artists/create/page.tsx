@@ -79,7 +79,27 @@ export default function CreateArtist() {
         {/* Image Upload Placeholder */}
         <div className="flex flex-col items-center bg-gray-200 p-4 w-1/4 text-center">
           <div className="bg-gray-400 p-24 mb-4">Image Placeholder</div>
-          <div className="bg-green-200 p-2 w-full">Upload Button Placeholder</div>
+          <Form {...form}>
+         <form onSubmit={form.handleSubmit(handleSubmit)}
+         className="max-w-md w-full flex flex-col gap-4">
+            <FormField 
+              control={form.control} 
+              name="imageURL" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Image URL</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Image URL" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+            <Button type="submit" className="w-full">Upload</Button>
+          </form>
+</Form>             	
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)}
@@ -114,7 +134,8 @@ export default function CreateArtist() {
                         </FormItem>
                       );
                     }}
-              />
+            />
+
             <FormField 
               control={form.control} 
               name="dateOfBirth" 
@@ -161,6 +182,23 @@ export default function CreateArtist() {
                       );
                     }}
             />
+
+<FormField 
+              control={form.control} 
+              name="birthLocation" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Place of Birth</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Place of Birth" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+
             <FormField 
               control={form.control} 
               name="dateOfDeath" 
@@ -204,6 +242,22 @@ export default function CreateArtist() {
               </FormDescription>
               <FormMessage />
             </FormItem>
+                      );
+                    }}
+            />
+
+<FormField 
+              control={form.control} 
+              name="deathLocation" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Place of Death</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Place of Death" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
                       );
                     }}
             />
