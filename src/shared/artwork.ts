@@ -3,6 +3,20 @@ import { Artist } from './artist'
 import { Edition } from './edition'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
+
+export enum Types {
+  PAINTING = 'painting',
+  SCULPTURE = 'sculpture',
+  PHOTOGRAPHY = 'photography',
+  DRAWING = 'drawing',
+  PRINT = 'print',
+  MIXEDMEDIA = 'mixed media',
+  CERAMICS = 'ceramics',
+  GLASS = 'glass',
+  TEXTILES = 'textiles',
+  FURNITURE = 'furniture',
+}
+
 @Entity('artwork', { allowApiCrud: true })
 export class Artwork 
 {
@@ -35,9 +49,9 @@ export class Artwork
     @Fields.string()
     description?: string;
 
-    @Fields.json()
-    types: any[] = [];
-
+    @Fields.enum(() => Types)
+    types!: Types;
+    
     @Fields.json()
     mediums: any[] = [];
 
@@ -69,9 +83,9 @@ export class Artwork
         }
     }
     /*/
-    async setMedium(mediumKey: string) 
-    {this.mediums = await fetchValueListByCategory("Medium", remult);}
+    // async setMedium(mediumKey: string) 
+    // {this.mediums = await fetchValueListByCategory("Medium", remult);}
 
-    async setType(typeKey: string) 
-    {this.types = await fetchValueListByCategory("Type", remult);}
+    // async setType(typeKey: string) 
+    // {this.types = await fetchValueListByCategory("Type", remult);}
 }
