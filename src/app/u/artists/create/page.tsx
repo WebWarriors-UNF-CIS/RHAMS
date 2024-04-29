@@ -5,12 +5,29 @@ import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import React from 'react';
 import Creatable from 'react-select/creatable';
+import * as z from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from 'react-hook-form';
+import e from 'express';
+import { Form, FormField, FormItem, FormMessage, FormLabel, FormControl } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+
+
+const formSchema = z.object({
+  emailAddress: z.string().email(),
+})
 
 export default function CreateArtist() {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
   const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
+  const handleSubmit = () => {}
+  const form = useForm<z.infer <typeof formSchema>>({
+    resolver: zodResolver(formSchema)});
+    defaultValues: {
+      emailAddress: ''}
+  
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
@@ -36,8 +53,26 @@ export default function CreateArtist() {
           <div className="bg-gray-400 p-24 mb-4">Image Placeholder</div>
           <div className="bg-green-200 p-2 w-full">Upload Button Placeholder</div>
         </div>
-
-        {/* Form Placeholder */}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(handleSubmit)}>
+            <FormField 
+              control={form.control} 
+              name="emailAddress" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Email Address</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Email Address" type="email"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+                  />
+                </form>
+        </Form>
+        
         <div className="flex-grow bg-gray-200 p-4">
           <div className="bg-white p-4">
             <div className="mb-4">Details Placeholder</div>
