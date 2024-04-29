@@ -21,6 +21,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
 
 
+
 const formSchema = z.object({
   firstName: z.string().nonempty(),
   lastName: z.string().nonempty(),
@@ -104,9 +105,12 @@ export default function CreateArtist() {
           </form>
 </Form>             	
         </div>
+        
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-white p-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)}
+       className="">
+        <div className="grid grid-cols-3 gap-4">
             <div className="space-y-4">
             <FormField 
               control={form.control} 
@@ -156,21 +160,7 @@ export default function CreateArtist() {
                     }}
             />
 
-            <FormField 
-              control={form.control} 
-              name="website" 
-              render={({ field }) => {
-                      return (
-                        <FormItem>
-                          <FormLabel>Website</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Website" type="string"{...field} />
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
-                      );
-                    }}
-            />
+            
             </div>{/* end of column 1 */}
             <div className="space-y-4">
             <FormField 
@@ -281,6 +271,9 @@ export default function CreateArtist() {
                       );
                     }}
             />
+            
+            </div>{/*end of column 2 */}
+            <div className="space-y-4">
             <FormField 
               control={form.control} 
               name="deathLocation" 
@@ -296,8 +289,23 @@ export default function CreateArtist() {
                       );
                     }}
             />
-            </div>{/*end of column 2 */}
-            <div className="space-y-4">
+
+<FormField 
+              control={form.control} 
+              name="website" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Website</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Website" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+            
             <FormField 
               control={form.control} 
               name="exhibitions" 
@@ -314,56 +322,56 @@ export default function CreateArtist() {
                     }}
             />
             </div>{/*end of column 3 */}
-            <div className="mt-4">
-
-            </div>{/*end of 1st text box area */}
-            
-            <FormField 
-              control={form.control} 
-              name="bio" 
-              render={({ field }) => {
-                      return (
-                        <FormItem>
-                          <FormLabel>Biography</FormLabel>
-                          <FormControl>
-                          <Textarea 
-                            placeholder="About the artist's life and work"
-                            className="resize-none" // Use appropriate classes for your design
-                            {...field} // This will handle your form binding and validation
-                          />
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
-                      );
-                    }}
-            />
-                <div className="mt-4">
-<FormField 
-              control={form.control} 
-              name="notes" 
-              render={({ field }) => {
-                      return (
-                        <FormItem>
-                          <FormLabel>Notes</FormLabel>
-                          <FormControl>
-                          <Textarea 
-                            placeholder="Notes"
-                            className="resize-none" // Use appropriate classes for your design
-                            {...field} // This will handle your form binding and validation
-                          />
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
-                      );
-                    }}
-            />
-            </div>{/*end of 2nd text box area */}
-            <div className='flex justify-end mt-4'>
-            <Button type="submit" className="w-full">Save Record</Button>
-            </div>
-                  
+            </div>{/*end of grid */}
+            {/* Biographies and Notes are full width and stacked */}
+        <div className="mb-4">
+          <FormField 
+            control={form.control} 
+            name="bio" 
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Biography</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="About the artist's life and work"
+                    className=" w-full h-20 bg-white" // Adjust height as necessary
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage/>
+              </FormItem>
+            )}
+          />        
+          
+          <FormField 
+            control={form.control} 
+            name="notes" 
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Notes</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Additional notes"
+                    className="resize- w-full h-20 bg-white" // Adjust height as necessary
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage/>
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="mt-4 flex justify-center md:justify-end">
+          <Button type="submit" className="">
+            Save Record
+          </Button>
+        </div>
                 </form>
+                
+                </div>
+                
         </Form>
+        
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">
