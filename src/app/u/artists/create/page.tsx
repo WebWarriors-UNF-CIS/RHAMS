@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import e from 'express';
 import { Form, FormField, FormItem, FormMessage, FormLabel, FormControl } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 
 const formSchema = z.object({
@@ -54,7 +55,8 @@ export default function CreateArtist() {
           <div className="bg-green-200 p-2 w-full">Upload Button Placeholder</div>
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <form onSubmit={form.handleSubmit(handleSubmit)}
+          className="max-w-md w-full flex flex-col gap-4">
             <FormField 
               control={form.control} 
               name="emailAddress" 
@@ -70,18 +72,9 @@ export default function CreateArtist() {
                       );
                     }}
                   />
+                  <Button type="submit" className="w-full">Submit</Button>
                 </form>
         </Form>
-        
-        <div className="flex-grow bg-gray-200 p-4">
-          <div className="bg-white p-4">
-            <div className="mb-4">Details Placeholder</div>
-            <div className="mb-4">Form Fields Placeholder</div>
-            <div className="mb-4">Bio/Description Placeholder</div>
-            <div className="mb-4">Notes Placeholder</div>
-            <div className="bg-green-200 p-2 w-1/4">Save Button Placeholder</div>
-          </div>
-        </div>
       </div>
     </div>
       <div className="flex flex-row justify-end gap-6 p-32">
