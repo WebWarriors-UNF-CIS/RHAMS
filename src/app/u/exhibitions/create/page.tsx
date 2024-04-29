@@ -67,10 +67,7 @@ export default function CreateExhibition() {
       {slug || 'Loading...'}
       </h1>
       <div className="container mx-auto p-6">
-      
-       
-        
-      <Form {...form}>
+       <Form {...form}>
       <div className="bg-white p-4">
       <form onSubmit={form.handleSubmit(handleSubmit)}
      className="">

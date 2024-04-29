@@ -69,9 +69,8 @@ export default function CreateCollection() {
       {slug || 'Loading...'}
       </h1>
       <div className="container mx-auto p-6">
-      
         
-       
+      {/* Collection Detail Form Section */}
       <Form {...form}>
       <div className="bg-white p-4">
       <form onSubmit={form.handleSubmit(handleSubmit)}
