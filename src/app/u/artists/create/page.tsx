@@ -9,10 +9,14 @@ import * as z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from 'react-hook-form';
 import e from 'express';
-import { Form, FormField, FormItem, FormMessage, FormLabel, FormControl } from '@/components/ui/form';
+import { Form, FormField, FormItem, FormMessage, FormLabel, FormControl, FormDescription } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-
+import { CalendarIcon } from "lucide-react"
+import { format } from "date-fns"
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 
 
 const formSchema = z.object({
@@ -35,6 +39,7 @@ export default function CreateArtist() {
   const pathname = usePathname();
   const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
   const handleSubmit = () => {}
+  const [date, setDate] = React.useState<Date>()
   const form = useForm<z.infer <typeof formSchema>>({
     resolver: zodResolver(formSchema)});
     defaultValues: {
@@ -115,22 +120,93 @@ export default function CreateArtist() {
               name="dateOfBirth" 
               render={({ field }) => {
                       return (
-                        <FormItem>
-                          <FormLabel>Date of Birth</FormLabel>
-                          <FormControl>
-                            
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
+                        <FormItem className="flex flex-col">
+              <FormLabel>Date of birth</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("1900-01-01")
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormDescription>
+                {/* date of birth  */}
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
                       );
                     }}
             />
-
-
-
-
-
-
+            <FormField 
+              control={form.control} 
+              name="dateOfDeath" 
+              render={({ field }) => {
+                      return (
+                        <FormItem className="flex flex-col">
+              <FormLabel>Date of Death</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("1900-01-01")
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormDescription>
+                {/* date of death  */}
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+                      );
+                    }}
+            />
                   <Button type="submit" className="w-full">Submit</Button>
                 </form>
         </Form>
