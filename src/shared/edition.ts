@@ -24,7 +24,7 @@ export class Edition
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\  
     @Fields.cuid()              
-    ID!: number;                          
+    id!: string;                         
     @Fields.createdAt()
     createdAt!: Date;
     @Fields.updatedAt()

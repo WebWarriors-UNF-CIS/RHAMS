@@ -9,7 +9,7 @@ export class Exhibition
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.string()        
-    ID!: string;
+    id!: string;
     @Fields.createdAt()     // The date and time this Exhibition entity was created
     createdAt!: Date;
     @Fields.updatedAt()     // The date and time this Exhibition entity was last updated

@@ -14,13 +14,13 @@ export class User
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.cuid()                       // A unique identifier for the User entity
-    id = ''
+    id!: string;
     @Fields.createdAt()                  // The date and time this User entity was created
-    createdAt = new Date()
+    createdAt!: Date
     @Fields.string({ allowNull: true })  // The ID of the user who last updated this User entity
     createdBy!: string;
     @Fields.updatedAt()                  // The date and time this User entity was last updated
-    updatedAt = new Date()
+    updatedAt!: Date
     @Fields.string()                     // The ID of the user who last updated this User entity
     updatedBy!: string;
   //\\//\\//\\|//\\//\\//\\
@@ -29,10 +29,16 @@ export class User
     role!: UserRole;
 
     @Fields.string()
-    email = ''
+    firstName!: string;
 
     @Fields.string()
-    password = ''
+    lastName!: string;
+
+    @Fields.string()
+    email!: string;
+
+    @Fields.string()
+    password!: string;
 
     @Fields.string()
     passwordHash!: string;
