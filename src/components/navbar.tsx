@@ -32,11 +32,11 @@ const Navbar = () => {
       <nav className="bg-c shadow-md">
         <div className="mx-auto lg:mx-20 px-4 py-2 flex justify-between items-center">
           <div className="flex space-x-8">
-            <a href="/u/artists"     className={`text-center text-e hover:text-b hover:font-semibold px-3 w-24 ${isActive('/u/artists')     ? 'underline' : ''}`}>Artists</a>
-            <a href="/u/artworks"    className={`text-center text-e hover:text-b hover:font-semibold px-3 w-24 ${isActive('/u/artworks')    ? 'underline' : ''}`}>Artworks</a>
-            <a href="/u/exhibitions" className={`text-center text-e hover:text-b hover:font-semibold px-3 w-24 ${isActive('/u/exhibitions') ? 'underline' : ''}`}>Exhibitions</a>
-            <a href="/u/collections" className={`text-center text-e hover:text-b hover:font-semibold px-3 w-24 ${isActive('/u/collections') ? 'underline' : ''}`}>Collections</a>
-            <a href="/u/media"       className={`text-center text-e hover:text-b hover:font-semibold px-3 w-24 ${isActive('/u/media')       ? 'underline' : ''}`}>Media</a>
+            <a href="/u/artists"     className={`text-center font-medium text-f hover:text-b px-2 w-18 ${isActive('/u/artists')     ? 'border-b-b border-b-2' : ''}`}>Artists</a>
+            <a href="/u/artworks"    className={`text-center font-medium text-f hover:text-b px-2 w-22 ${isActive('/u/artworks')    ? 'border-b-b border-b-2' : ''}`}>Artworks</a>
+            <a href="/u/exhibitions" className={`text-center font-medium text-f hover:text-b px-2 w-24 ${isActive('/u/exhibitions') ? 'border-b-b border-b-2' : ''}`}>Exhibitions</a>
+            <a href="/u/collections" className={`text-center font-medium text-f hover:text-b px-2 w-24 ${isActive('/u/collections') ? 'border-b-b border-b-2' : ''}`}>Collections</a>
+            <a href="/u/media"       className={`text-center font-medium text-f hover:text-b px-2 w-18 ${isActive('/u/media')       ? 'border-b-b border-b-2' : ''}`}>Media</a>
           </div>
           <div className="relative">
             <DropdownMenu title="Account">

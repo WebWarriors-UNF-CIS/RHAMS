@@ -2,19 +2,17 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import { Artist } from '../../../shared/artist';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
+import { Input } from '../../../components/ui/input';
+import { PlusIcon } from '@radix-ui/react-icons';
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import React from 'react';
-import Image from "next/image";
-import Creatable from 'react-select/creatable';
-import Link from 'next/link';
-import { ArtistData, columns } from "../../../components/ui/columns/artist-overview";
+import { columns } from "../../../components/ui/columns/artist-overview";
 import { DataTable } from "../../../components/ui/data-table";
 import { remult, EntityFilter} from 'remult';
 
 
-
+import { Artist } from '../../../shared/artist';
 const repo = remult.repo<Artist>(Artist);
 
 export default function ArtistsOverview() 
@@ -22,14 +20,16 @@ export default function ArtistsOverview()
   const router = useRouter();
   const [artist, setArtists] = useState<Artist[]>([]);
   const [slug, setSlug] = useState<string>('');
+  const [selected, setSelected] = useState(false);
   const pathname = usePathname();
   const imageLoader = ({src}: {src: string}) => {return `https://via.placeholder.com/${src}`}
-  
 
-  const artistName = (artist: Artist) => artist.lastName + ', ' + artist.firstName;
 
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
+  function search()
+  {return console.log('searching...')} //Inmplement search functionality
+
   useEffect(() => 
     {if (pathname) { const parts = pathname.split('/'); setSlug(reformatTitle(parts[2]) + ' ')}}, [pathname]);
   useEffect(() => 
@@ -40,42 +40,43 @@ export default function ArtistsOverview()
       setSlug(reformatTitle(parts[2]) + ' ');
     }
   }, [pathname]);
+
   useEffect(() =>
     {repo.find({}).then(artists => setArtists(artists))} , [remult]);
-  
- 
-    
+
   let entries = artist.map(artist => 
-    [artist.ID, artist, artist.thumbnail, 
-      artist.firstName, artist.lastName, 
-      artist.bio, artist.birthDate, artist.deathDate, 
-      artist.birthLocation, artist.deathLocation, 
-      artist.notes]);
+    [artist.id, artist.thumbnail, artist.lastName, artist.firstName, artist.notes]);
     const data = Object.fromEntries(entries);
     
-  
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-5xl text-b font-bold text-left ml-5 my-10">
       {slug || 'Loading...'}
       </h1>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col">
       <div className="flex justify-between">
-        <div className="flex space-x-4">
-          <div className="bg-red-200 p-4 text-center">Overview Placeholder</div>
-          <div className="bg-yellow-200 p-4 text-center">Add New Placeholder</div>
+        <div className="flex">
+          <div className="self-end text-b text-left text-lg font-semibold mx-2 border-b-b border-b-2 h-10">
+            Overview
+          </div>
+          <div className={`self-end text-lg pl-4 pr-2 text-center h-10 ${ selected ? 'text-f' : 'text-e' }`}>
+            Add New
+          </div>
+          <Button className="self-end mb-3" variant='defaultCirclular' size='icon'
+            onMouseEnter={() => setSelected(true)}
+            onMouseLeave={() => setSelected(false)}
+            onClick={() => router.push('./artists/create')}>
+          <PlusIcon className='h-5 w-5'/></Button>
         </div>
-        <div className="bg-purple-200 p-4 text-center">Search Placeholder</div>
+        <div className="flex w-full max-w-sm items-center space-x-2">
+          <Input className='bg-white' type="search" placeholder="Search Artists" />
+          <Button variant={'secondary'} onClick={search}>
+          <MagnifyingGlassIcon className='h-5 w-5'/></Button>
+        </div>
       </div>
-      
-      <div className="bg-gray-300 h-96 p-8 text-center w-full">
+      <div className="border-t border-t-d h-96 pt-4 text-center w-full">
       <DataTable columns={columns} data={data}/>
       </div>
-    </div>
-      <div className="flex flex-row justify-end gap-6 p-32">
-        <button  onClick={() => router.push('/')} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
-            Back
-        </button>
       </div>
     </div>
   );

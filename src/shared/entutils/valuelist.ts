@@ -4,13 +4,13 @@ import { Entity, Fields } from 'remult'
 export class ValueList 
 {
   @Fields.cuid()                            // A unique identifier for the list entity, could be combine with category to make it easy to find the list
-  ID = ''
+  id!: string
 
   @Fields.string({ caption: "Category" })   // e.g., 'medium', 'material', 'location', 'foundary', etc.
-  category: string = ''
+  category!: string
 
   @Fields.json({ caption: "Value" })        // The actual value like 'medium:Oil on Canvas', 'material:Bronze', 'location(city:New York, state:NY)', 'foundary(foundaryname:Fine Arts Foundary, city:Fort Pierce, state:FL, contactinfo:...)' etc.               
-  value: any = {}
+  value!: any
 }
 
 // ValueList Entity Description:

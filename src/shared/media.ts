@@ -8,7 +8,7 @@ export class Media
   //|| Database Fields ||\\
   //\\//\\//\\|//\\//\\//\\
     @Fields.cuid()
-    ID!: number;
+    id!: string;
     @Fields.createdAt()
     createdAt!: Date;
     @Fields.updatedAt()
