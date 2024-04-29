@@ -21,6 +21,7 @@ import { toast } from "@/components/ui/use-toast"
 
 
 const formSchema = z.object({
+  catalogNumber: z.number(),
   title: z.string().nonempty(),
   artist: z.string().nonempty(),
   releaseDate: z.date(),
