@@ -252,7 +252,7 @@ export default function CreateArtwork() {
               <FormControl>
                 <Textarea 
                   placeholder="About the artist's life and work"
-                  className=" w-full h-20 bg-white" // Adjust height as necessary
+                  className=" w-1/2 h-20 bg-white" // Adjust height as necessary
                   {...field}
                 />
               </FormControl>
@@ -270,7 +270,7 @@ export default function CreateArtwork() {
               <FormControl>
                 <Textarea 
                   placeholder="Additional notes"
-                  className="resize- w-full h-20 bg-white" // Adjust height as necessary
+                  className="resize- w-1/2 h-20 bg-white" // Adjust height as necessary
                   {...field}
                 />
               </FormControl>

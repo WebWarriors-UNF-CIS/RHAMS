@@ -287,7 +287,7 @@ export default function CreateExhibition() {
               <FormControl>
                 <Textarea 
                   placeholder="Additional notes"
-                  className="resize- w-full h-20 bg-white" // Adjust height as necessary
+                  className="resize- w-1/3 h-20 bg-white" // Adjust height as necessary
                   {...field}
                 />
               </FormControl>
