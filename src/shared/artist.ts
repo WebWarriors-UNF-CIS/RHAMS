@@ -35,6 +35,9 @@ export class Artist
     deathLocation?: any[] = [];
 
     @Fields.string()
+    website?: string;
+
+    @Fields.string()
     thumbnail?: string;
 
     @Fields.string()
