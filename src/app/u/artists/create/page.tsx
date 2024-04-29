@@ -21,21 +21,21 @@ import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
 
 
-
 const formSchema = z.object({
   firstName: z.string().nonempty(),
   lastName: z.string().nonempty(),
-  dateOfBirth: z.date(),
+  birthDate: z.date(),
   birthLocation: z.string(),
-  dateOfDeath: z.date(),
+  deathDate: z.date(),
   deathLocation: z.string(),
   placesLived: z.string(),
-  imageURL: z.string(),
+  thumbnail: z.string(),
   website: z.string(),
   bio: z.string(),
   exhibitions: z.string(),
   notes: z.string(),
 })
+
 
 export default function CreateArtist() {
   const router = useRouter();
@@ -49,18 +49,17 @@ export default function CreateArtist() {
     defaultValues: {
       firstName: ''
       lastName: ''
-      dateOfBirth: ''
+      birthDate: ''
       birthLocation: ''
-      dateOfDeath: ''
+      deathDate:  ''
       deathLocation: ''
       placesLived: ''
-      imageURL: ''
+      thumbnail: ''
       website: ''
       bio: ''
       notes: ''
     }
   
-
   function reformatTitle(input: string) 
   {return input.charAt(0).toUpperCase() + input.slice(1);}
   
@@ -83,12 +82,12 @@ export default function CreateArtist() {
         {/* Image Upload Placeholder */}
         <div className="flex flex-col items-center bg-gray-200 p-4 w-1/4 text-center">
           <div className="bg-gray-400 p-24 mb-4">Image Placeholder</div>
-          <Form {...form}>
+        <Form {...form}>
          <form onSubmit={form.handleSubmit(handleSubmit)}
          className="max-w-md w-full flex flex-col gap-4">
             <FormField 
               control={form.control} 
-              name="imageURL" 
+              name="thumbnail" 
               render={({ field }) => {
                       return (
                         <FormItem>
@@ -165,7 +164,7 @@ export default function CreateArtist() {
             <div className="space-y-4">
             <FormField 
               control={form.control} 
-              name="dateOfBirth" 
+              name="birthDate" 
               render={({ field }) => {
                       return (
                         <FormItem className="flex flex-col">
@@ -227,7 +226,7 @@ export default function CreateArtist() {
 
             <FormField 
               control={form.control} 
-              name="dateOfDeath" 
+              name="deathDate" 
               render={({ field }) => {
                       return (
                         <FormItem className="flex flex-col">
