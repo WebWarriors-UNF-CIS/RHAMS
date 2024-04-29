@@ -69,32 +69,9 @@ export default function CreateCollection() {
       {slug || 'Loading...'}
       </h1>
       <div className="container mx-auto p-6">
-      <div className="flex gap-4">
-        {/* Image Upload Placeholder */}
-        <div className="flex flex-col items-center bg-gray-200 p-4 w-1/4 text-center">
-          <div className="bg-gray-400 p-24 mb-4">Image Placeholder</div>
-        <Form {...form}>
-         <form onSubmit={form.handleSubmit(handleSubmit)}
-         className="max-w-md w-full flex flex-col gap-4">
-            <FormField 
-              control={form.control} 
-              name="thumbnail" 
-              render={({ field }) => {
-                      return (
-                        <FormItem>
-                          <FormLabel></FormLabel>
-                          <FormControl>
-                            <Input placeholder="Image URL" type="string"{...field} />
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
-                      );
-                    }}
-            />
-            <Button type="submit" className="w-full">Upload</Button>
-          </form>
-</Form>             	
-        </div>
+      
+        
+       
       <Form {...form}>
       <div className="bg-white p-4">
       <form onSubmit={form.handleSubmit(handleSubmit)}
@@ -232,7 +209,7 @@ export default function CreateCollection() {
               <FormControl>
                 <Textarea 
                   placeholder="Additional notes"
-                  className="resize- w-full h-20 bg-white" // Adjust height as necessary
+                  className="resize- w-1/3 h-20 bg-white" // Adjust height as necessary
                   {...field}
                 />
               </FormControl>
@@ -252,7 +229,7 @@ export default function CreateCollection() {
               
       </Form>
       
-    </div>
+    
   </div>
       <div className="flex flex-row justify-end gap-6 p-32">
         <button  onClick={() => router.push('/u/exhibitions')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-lg" type="button">
