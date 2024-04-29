@@ -50,6 +50,7 @@ export default function CreateArtwork() {
       title: ''
       artist: ''
       thumbnail: ''
+      releaseDate: new Date()
       description: ''
       types: ''
       mediums: ''
