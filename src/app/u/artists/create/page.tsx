@@ -30,6 +30,7 @@ const formSchema = z.object({
   imageURL: z.string(),
   website: z.string(),
   bio: z.string(),
+  exhibitions: z.string(),
   notes: z.string(),
 })
 
@@ -65,7 +66,7 @@ export default function CreateArtist() {
     if (pathname)   
     {
       const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]) + ' Placeholder Page');
+      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]));
     }
   }, [pathname]);
   
@@ -246,7 +247,7 @@ export default function CreateArtist() {
                     }}
             />
 
-<FormField 
+            <FormField 
               control={form.control} 
               name="deathLocation" 
               render={({ field }) => {
@@ -261,7 +262,87 @@ export default function CreateArtist() {
                       );
                     }}
             />
-                  <Button type="submit" className="w-full">Submit</Button>
+
+<FormField 
+              control={form.control} 
+              name="placesLived" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Places Lived</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Places Lived" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+
+<FormField 
+              control={form.control} 
+              name="website" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Website</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Website" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+
+<FormField 
+              control={form.control} 
+              name="bio" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Biography</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Biography" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+
+            <FormField 
+              control={form.control} 
+              name="exhibitions" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Exhibitions Placeholder</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Exhibitions Placeholder" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+
+            <FormField 
+              control={form.control} 
+              name="notes" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Notes</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Notes" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+                  <Button type="submit" className="w-full">Save Record</Button>
                 </form>
         </Form>
       </div>
