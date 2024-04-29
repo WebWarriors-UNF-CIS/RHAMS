@@ -37,6 +37,7 @@ export class Exhibition
   @Fields.dateOnly()
   endDate!: Date;
 
+
   //@Relations.toMany
   //featuredArtists!: Artist[];
 
