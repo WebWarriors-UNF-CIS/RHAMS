@@ -17,6 +17,8 @@ import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
+import { Textarea } from "@/components/ui/textarea"
+import { toast } from "@/components/ui/use-toast"
 
 
 const formSchema = z.object({
@@ -104,7 +106,8 @@ export default function CreateArtist() {
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)}
-          className="max-w-md w-full flex flex-col gap-4">
+          className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="space-y-4">
             <FormField 
               control={form.control} 
               name="firstName" 
@@ -120,7 +123,7 @@ export default function CreateArtist() {
                       );
                     }}
             />
-            
+
             <FormField 
               control={form.control} 
               name="lastName" 
@@ -136,7 +139,40 @@ export default function CreateArtist() {
                       );
                     }}
             />
+            
+            <FormField 
+              control={form.control} 
+              name="placesLived" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Places Lived</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Places Lived" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
 
+            <FormField 
+              control={form.control} 
+              name="website" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Website</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Website" type="string"{...field} />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+            </div>{/* end of column 1 */}
+            <div className="space-y-4">
             <FormField 
               control={form.control} 
               name="dateOfBirth" 
@@ -183,8 +219,7 @@ export default function CreateArtist() {
                       );
                     }}
             />
-
-<FormField 
+            <FormField 
               control={form.control} 
               name="birthLocation" 
               render={({ field }) => {
@@ -246,7 +281,6 @@ export default function CreateArtist() {
                       );
                     }}
             />
-
             <FormField 
               control={form.control} 
               name="deathLocation" 
@@ -262,55 +296,8 @@ export default function CreateArtist() {
                       );
                     }}
             />
-
-<FormField 
-              control={form.control} 
-              name="placesLived" 
-              render={({ field }) => {
-                      return (
-                        <FormItem>
-                          <FormLabel>Places Lived</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Places Lived" type="string"{...field} />
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
-                      );
-                    }}
-            />
-
-<FormField 
-              control={form.control} 
-              name="website" 
-              render={({ field }) => {
-                      return (
-                        <FormItem>
-                          <FormLabel>Website</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Website" type="string"{...field} />
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
-                      );
-                    }}
-            />
-
-<FormField 
-              control={form.control} 
-              name="bio" 
-              render={({ field }) => {
-                      return (
-                        <FormItem>
-                          <FormLabel>Biography</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Biography" type="string"{...field} />
-                          </FormControl>
-                          <FormMessage/>
-                        </FormItem>
-                      );
-                    }}
-            />
-
+            </div>{/*end of column 2 */}
+            <div className="space-y-4">
             <FormField 
               control={form.control} 
               name="exhibitions" 
@@ -319,15 +306,39 @@ export default function CreateArtist() {
                         <FormItem>
                           <FormLabel>Exhibitions Placeholder</FormLabel>
                           <FormControl>
-                            <Input placeholder="Exhibitions Placeholder" type="string"{...field} />
+                            <Input placeholder="Exhibitions" type="string"{...field} />
                           </FormControl>
                           <FormMessage/>
                         </FormItem>
                       );
                     }}
             />
+            </div>{/*end of column 3 */}
+            <div className="mt-4">
 
+            </div>{/*end of 1st text box area */}
+            
             <FormField 
+              control={form.control} 
+              name="bio" 
+              render={({ field }) => {
+                      return (
+                        <FormItem>
+                          <FormLabel>Biography</FormLabel>
+                          <FormControl>
+                          <Textarea 
+                            placeholder="About the artist's life and work"
+                            className="resize-none" // Use appropriate classes for your design
+                            {...field} // This will handle your form binding and validation
+                          />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      );
+                    }}
+            />
+                <div className="mt-4">
+<FormField 
               control={form.control} 
               name="notes" 
               render={({ field }) => {
@@ -335,14 +346,22 @@ export default function CreateArtist() {
                         <FormItem>
                           <FormLabel>Notes</FormLabel>
                           <FormControl>
-                            <Input placeholder="Notes" type="string"{...field} />
+                          <Textarea 
+                            placeholder="Notes"
+                            className="resize-none" // Use appropriate classes for your design
+                            {...field} // This will handle your form binding and validation
+                          />
                           </FormControl>
                           <FormMessage/>
                         </FormItem>
                       );
                     }}
             />
-                  <Button type="submit" className="w-full">Save Record</Button>
+            </div>{/*end of 2nd text box area */}
+            <div className='flex justify-end mt-4'>
+            <Button type="submit" className="w-full">Save Record</Button>
+            </div>
+                  
                 </form>
         </Form>
       </div>
