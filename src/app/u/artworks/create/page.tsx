@@ -19,6 +19,8 @@ import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Mediums, Types } from '@/shared/artwork';
+
 
 
 const formSchema = z.object({
@@ -29,7 +31,7 @@ const formSchema = z.object({
   thumbnail: z.string(),
   description: z.string(),
   types: z.string(),
-  mediums: z.string(),
+  Mediums: z.string(),
   measurements: z.string(),
   numEditions: z.number(),
   notes: z.string(),
@@ -214,13 +216,17 @@ export default function CreateArtwork() {
                       <FormItem>
                         <FormLabel>Type</FormLabel>
                         <FormControl>
-                          <Input placeholder="Type" type="string"{...field} />
+                        <select {...field} className="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                          <option value="">Select Type</option>
+                          {Object.entries(Types).map(([key, value]) => (
+                            <option key={key} value={value}>{value}</option>
+                          ))}
+                        </select>
                         </FormControl>
                         <FormMessage/>
                       </FormItem>
                     );
-                  }}
-          />
+                  }}/>
 
 <FormField 
             control={form.control} 
@@ -242,21 +248,25 @@ export default function CreateArtwork() {
           {/*end of column 2 */}
           {/*////////////////////////////////////start of column 3//////////////////////////////////////////////////////////// */}
           <div className="space-y-4">
-                      <FormField 
-                        control={form.control} 
-                        name="mediums" 
-                        render={({ field }) => {
-                                return (
-                                  <FormItem>
-                                    <FormLabel>Medium</FormLabel>
-                                    <FormControl>
-                                      <Input placeholder="medium" type="string"{...field} />
-                                    </FormControl>
-                                    <FormMessage/>
-                                  </FormItem>
-                                );
-                              }}
-                      />
+          <FormField 
+            control={form.control} 
+            name="Mediums" 
+            render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Medium</FormLabel>
+                        <FormControl>
+                        <select {...field} className="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                          <option value="">Select Medium</option>
+                          {Object.entries(Mediums).map(([key, value]) => (
+                            <option key={key} value={value}>{value}</option>
+                          ))}
+                        </select>
+                        </FormControl>
+                        <FormMessage/>
+                      </FormItem>
+                    );
+                  }}/>
           
           <FormField 
             control={form.control} 
