@@ -18,6 +18,7 @@ import { Calendar } from "@/components/ui/calendar"
 import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
+import { MediaTypes } from '@/shared/media';
 
 const formSchema = z.object({
   thumbnail: z.string(),
@@ -26,7 +27,7 @@ const formSchema = z.object({
   location: z.string(),
   authors: z.string().nonempty(),
   mediaSources: z.string().nonempty(),
-  mediaTypes: z.string().nonempty(),
+  MediaTypes: z.string(),
   url: z.string(),
   notes: z.string(),
 })
@@ -219,19 +220,23 @@ export default function CreateMediaClip() {
           
           <FormField 
             control={form.control} 
-            name="mediaTypes" 
+            name="MediaTypes" 
             render={({ field }) => {
                     return (
                       <FormItem>
-                        <FormLabel>Media Types</FormLabel>
+                        <FormLabel>Medium</FormLabel>
                         <FormControl>
-                          <Input placeholder="Media Types" type="string"{...field} />
+                        <select {...field} className="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                          <option value="">Select Media Type</option>
+                          {Object.entries(MediaTypes).map(([key, value]) => (
+                            <option key={key} value={value}>{value}</option>
+                          ))}
+                        </select>
                         </FormControl>
                         <FormMessage/>
                       </FormItem>
                     );
-                  }}
-          />
+                  }}/>
           </div> {/*end of column 3 */}
           </div>{/*end of grid */}
 
