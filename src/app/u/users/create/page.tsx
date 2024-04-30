@@ -26,6 +26,7 @@ const formSchema = z.object({
   role: z.enum(['admin', 'guest']),
   email: z.string().email(),
   password: z.string().nonempty(),
+  passwordConfirm: z.string().nonempty(),
   passwordHash: z.string().nonempty(),
  
 })
@@ -166,13 +167,13 @@ export default function CreateUserAccount() {
 
           <FormField 
             control={form.control} 
-            name="passwordHash" 
+            name="passwordConfirm" 
             render={({ field }) => {
                     return (
                       <FormItem>
-                        <FormLabel>Password</FormLabel>
+                        <FormLabel>Re-Enter Password</FormLabel>
                         <FormControl>
-                          <Input placeholder="password" type="string"{...field} />
+                          <Input placeholder="re-enter password" type="string"{...field} />
                         </FormControl>
                         <FormMessage/>
                       </FormItem>
