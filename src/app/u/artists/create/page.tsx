@@ -107,7 +107,7 @@ export default function CreateArtist()
           </div>
           <div className="max-w-md py-4 flex flex-col gap-4 w-5/6">
             <Input  type="file" onChange={(e) => setImageUrl(e.target.value)}/>
-              <Button onClick={} className="w-full">
+              <Button className="w-full">
                 Upload
               </Button>
           </div>
