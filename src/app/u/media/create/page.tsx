@@ -61,7 +61,7 @@ export default function CreateMediaClip() {
     if (pathname)   
     {
       const parts = pathname.split('/');
-      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]) + ' Placeholder Page');
+      setSlug(reformatTitle(parts[3]) + ' ' + reformatTitle(parts[2]));
     }
   }, [pathname]);
   
