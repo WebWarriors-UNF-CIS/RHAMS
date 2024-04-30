@@ -46,8 +46,8 @@ export class Artist
     @Fields.string()
     notes?: string
 
-    //@Relations.toMany
-    //artworks?: Artwork[];
+    @Relations.toMany(() => Artwork)
+    artworks?: Artwork[]
 
     //@Relations.toMany
     //featuredIn?: Exhibition[];
