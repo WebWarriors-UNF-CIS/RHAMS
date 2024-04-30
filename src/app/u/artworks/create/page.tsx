@@ -18,6 +18,7 @@ import { Calendar } from "@/components/ui/calendar"
 import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
+import { Checkbox } from "@/components/ui/checkbox"
 
 
 const formSchema = z.object({
@@ -57,7 +58,7 @@ export default function CreateArtwork() {
       measurements: ''
       numEditions: ''
       notes: ''
-      inPortfolioBook: ''
+      inPortfolioBook: false
     }
 
   function reformatTitle(input: string) 
@@ -110,6 +111,21 @@ export default function CreateArtwork() {
      className="">
       <div className="grid grid-cols-3 gap-4">
           <div className="space-y-4">
+          <FormField 
+            control={form.control} 
+            name="catalogNumber" 
+            render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Catalog Number</FormLabel>
+                        <FormControl>
+                          <Input placeholder="catalog number" type="number"{...field} />
+                        </FormControl>
+                        <FormMessage/>
+                      </FormItem>
+                    );
+                  }}
+          />
           <FormField 
             control={form.control} 
             name="title" 
@@ -206,7 +222,25 @@ export default function CreateArtwork() {
                   }}
           />
 
+<FormField 
+            control={form.control} 
+            name="numEditions" 
+            render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Number of Editions</FormLabel>
+                        <FormControl>
+                          <Input placeholder="# of editions" type="number"{...field} />
+                        </FormControl>
+                        <FormMessage/>
+                      </FormItem>
+                    );
+                  }}
+          />
+
           </div>
+          {/*end of column 2 */}
+          {/*////////////////////////////////////start of column 3//////////////////////////////////////////////////////////// */}
           <div className="space-y-4">
                       <FormField 
                         control={form.control} 
@@ -239,6 +273,23 @@ export default function CreateArtwork() {
                     );
                   }}
           />
+          
+          <FormField 
+            control={form.control} 
+            name="inPortfolioBook" 
+            render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel className="p-4">
+                          In Portfolio Book
+                        </FormLabel>
+                        <FormControl>
+                          <Checkbox  />
+                        </FormControl>
+                        <FormMessage/>
+                      </FormItem>
+                    );
+                  }}></FormField>
           </div> {/*end of column 3 */}
           </div>{/*end of grid */}
 
