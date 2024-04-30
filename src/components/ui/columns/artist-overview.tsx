@@ -9,6 +9,7 @@ export type ArtistData =
   thumbnail: string
   lastName: string
   firstName: string
+  notes: string
 }
  
 export const columns: ColumnDef<ArtistData>[] = 
@@ -35,7 +36,7 @@ export const columns: ColumnDef<ArtistData>[] =
   },
   {
     accessorKey: "thumbnail",
-    header: " ",
+    header: "",
   },
   {
     accessorKey: "lastName",
@@ -44,5 +45,9 @@ export const columns: ColumnDef<ArtistData>[] =
   {
     accessorKey: "firstName",
     header: "First Name",
+  },
+  {
+    accessorKey: "notes",
+    header: "Notes",
   },
 ]

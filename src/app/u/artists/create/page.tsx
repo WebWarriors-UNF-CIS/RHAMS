@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,7 +10,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
-import { PlusIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { ChevronRightIcon } from '@radix-ui/react-icons';
+import { Trash } from 'lucide-react';
 import { Artist } from '../../../../shared/artist';
 
 const formSchema = z.object
@@ -36,6 +36,7 @@ export default function CreateArtist()
   const pathname = usePathname();
   const [slug, setSlug] = useState<string | null>(null);
   const [imageUrl, setImageUrl] = useState<string>();
+  const [thumbnail, setThumbnail] = useState<string>();
 
   useEffect(() => {
     if (pathname) {
@@ -89,9 +90,9 @@ export default function CreateArtist()
 
   const imageLoader = ({ src }: { src: string }) => 
     { 
-      if (imageUrl !== undefined && imageUrl !== '') {return imageUrl;}
+      if (thumbnail !== undefined && thumbnail !== '') {return thumbnail;}
       else {return `https://via.placeholder.com/${src}`}
-    }
+    } //https://picsum.photos/400/300
 
   return (
     <div className="container w-full px-4">
@@ -99,16 +100,19 @@ export default function CreateArtist()
       <div className="flex mb-16 gap-4 w-full">
         <div className="flex flex-col items-center bg-white text-center">
           <div>
-            {imageUrl ? (
-              <Image src={imageUrl} alt="Uploaded Image" width={400} height={300} loader={imageLoader} />
+            {thumbnail ? (
+              <Image src={thumbnail} alt="Uploaded Image" width={400} height={300} loader={imageLoader} />
             ) : (
               <Image src="400x300" alt="Placeholder" width={400} height={300} loader={imageLoader} />
             )}
           </div>
           <div className="max-w-md py-4 flex flex-col gap-4 w-5/6">
-            <Input  type="file" onChange={(e) => setImageUrl(e.target.value)}/>
-              <Button className="w-full">
+            <Input  type="text" onChange={(e) => setImageUrl(e.target.value)}/>
+              <Button className="w-full" onClick={() => setThumbnail(imageUrl)}>
                 Upload
+              </Button>
+              <Button variant="destructiveCircular" size="sm" className={thumbnail ? 'rounded-sm self-end' : 'hidden'} onClick={() => setThumbnail("")}>
+                <Trash className='h-4 w-4'/>
               </Button>
           </div>
         </div>
@@ -257,11 +261,11 @@ export default function CreateArtist()
 
                 <div className="mt-8 flex justify-end space-x-4">
                   <Button type="submit" className="w-20">
-                    <PlusIcon />
+                    Create
                   </Button>
                   
                   <Button variant="secondary" className="w-20" onClick={() => router.push('/u/artists')}>
-                    <ArrowRightIcon />
+                    <ChevronRightIcon />
                   </Button>
                 </div>
               </div>
