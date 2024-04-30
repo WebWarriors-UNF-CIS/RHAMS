@@ -44,7 +44,7 @@ export default function ArtworksOverview()
     {repo.find({}).then(artworks => setArtworks(artworks))} , [remult]);
 
   let entries = artwork.map(artworks => 
-    [ artworks.id, artworks.title, artworks.artist, artworks.releaseDate, artworks.thumbnail, artworks.description, artworks.types, artworks.mediums, artworks.measurements, artworks.notes, artworks.inPortfolioBook, artworks.numEditions ]);
+    [ artworks.id, artworks.title, artworks.artist, artworks.releaseDate, artworks.thumbnail, artworks.description, artworks.type, artworks.medium, artworks.measurements, artworks.notes, artworks.inPortfolioBook, artworks.numEditions ]);
     const data = Object.fromEntries(entries);
     
   return (
