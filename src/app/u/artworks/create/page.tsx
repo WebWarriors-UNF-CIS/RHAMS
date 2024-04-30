@@ -182,7 +182,7 @@ export default function CreateArtwork() {
                     {field.value ? (
                       format(field.value, "PPP")
                     ) : (
-                      <span>Pick a date</span>
+                      <span>Choose a date</span>
                     )}
                     <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                   </Button>
