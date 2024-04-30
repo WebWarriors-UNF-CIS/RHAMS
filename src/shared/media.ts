@@ -2,15 +2,15 @@ import { Entity, Fields, Relations, remult } from 'remult'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
 export enum MediaTypes {
-    Article = 'Article',
-    Audio = 'Audio',
-    Book = 'Book',
-    Film = 'Film',
-    Image = 'Image',
-    Interview = 'Interview',
-    Podcast = 'Podcast',
-    Video = 'Video',
-    Website = 'Website',
+    ARTICLE = 'Article',
+    AUDIO = 'Audio',
+    BOOK = 'Book',
+    FILM = 'Film',
+    IMAGE = 'Image',
+    INTERVIEW = 'Interview',
+    PODCAST = 'Podcast',
+    VIDEO = 'Video',
+    WEBSITE = 'Website',
 }
 
 @Entity('media', { allowApiCrud: true })
@@ -42,11 +42,11 @@ export class Media
     @Fields.string()
     description?: string;
 
-    @Fields.json()
-    authors: any [] = [];
+    @Fields.string()
+    author?: string
 
-    @Fields.json()
-    mediaSources: any [] = [];
+    @Fields.string()
+    source?: string
 
     @Fields.enum(() => MediaTypes)
     type!: MediaTypes;
@@ -69,6 +69,7 @@ export class Media
     //@Relations.toMany
     //featuredExhibitions: Exhibition[];
 
+    /*
     async setAuthors(authorsKey: string)
     {this.authors = await fetchValueListByCategory("Author", remult)}
 
@@ -83,4 +84,5 @@ export class Media
           throw new Error("Invalid type specified.");
       }
   }
+  */
 }

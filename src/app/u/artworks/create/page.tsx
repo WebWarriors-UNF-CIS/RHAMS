@@ -17,7 +17,6 @@ import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Mediums, Types } from '@/shared/artwork';
 
@@ -25,8 +24,8 @@ import { Mediums, Types } from '@/shared/artwork';
 
 const formSchema = z.object({
   catalogNumber: z.number(),
-  title: z.string().nonempty(),
-  artist: z.string().nonempty(),
+  title: z.string().min(1),
+  artist: z.string().min(1),
   releaseDate: z.date(),
   thumbnail: z.string(),
   description: z.string(),

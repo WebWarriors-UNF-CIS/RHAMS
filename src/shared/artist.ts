@@ -28,11 +28,11 @@ export class Artist
     @Fields.dateOnly()
     deathDate?: Date;
 
-    @Fields.json()
-    birthLocation?: any[] = [];
+    @Fields.string()
+    birthLocation?: string;
 
-    @Fields.json()
-    deathLocation?: any[] = [];
+    @Fields.string()
+    deathLocation?: string
 
     @Fields.string()
     website?: string;
@@ -51,10 +51,11 @@ export class Artist
 
     //@Relations.toMany
     //featuredIn?: Exhibition[];
-
+    /*
     async setBirthLocation(locationsKey: string) 
     {this.birthLocation = await fetchValueListByCategory("Location", remult)}
 
     async setDeathLocation(locationsKey: string) 
     {this.deathLocation = await fetchValueListByCategory("Location", remult)}
+    */
 }

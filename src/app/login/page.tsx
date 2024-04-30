@@ -90,70 +90,67 @@ export default function Login() {
             <Image src={Logo} alt="RHA-Logo" width={250} height={250} />
           </div>
           <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="max-w-md w-full flex flex-col gap-4"
-        >
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel className="text-white">Email address</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Email address"
-                      type="email"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-          
-          
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel className="text-white">Password</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Password" type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-          <FormField
-            control={form.control}
-            name="passwordConfirm"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel className="text-white">Password confirm</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Password confirm"
-                      type="password"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-          <Button type="submit" className="w-full">
-            Submit
-          </Button>
-        </form>
-      </Form>
+          <form
+            onSubmit={form.handleSubmit(handleSubmit)}
+            className="max-w-md w-full flex flex-col gap-4"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => {
+                return (
+                  <FormItem>
+                    <FormLabel className="block text-c text-sm font-bold mb-2">Username</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="me@domain.com"
+                        type="email"
+                        {...field}
+                        className="input bg-input border border-border rounded-md py-2 px-3 leading-tight focus:outline-none focus:ring"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => {
+                return (
+                  <FormItem>
+                    <FormLabel className="block text-c text-sm font-bold mb-2">Password</FormLabel>
+                    <FormControl>
+                      <Input 
+                      placeholder="********" 
+                      type="password" 
+                      {...field} 
+                      className="input bg-input border border-border rounded-md py-2 px-3 mb-3 leading-tight focus:outline-none focus:ring"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+            <div className="flex items-center justify-between px-2 mb-12">
+            <div className="flex flex-none items-center space-x-2">
+                <Checkbox id="rememberme" />
+                <label
+                  htmlFor="rememberme"
+                  className="text-sm text-c"> Remember Me 
+                </label>
+            </div>
+            <button onClick={() => router.push('/u/artists')} className="text-sm text-c hover:text-a">Forgot Password?</button>
+          </div>
+          <div className="flex justify-center items-center">
+            <Button type="submit" className="bg-a px-16 rounded text-c">
+              Log In
+            </Button>
+          </div>
+          </form>
+        </Form>
         </div>
       </div>
     </div>

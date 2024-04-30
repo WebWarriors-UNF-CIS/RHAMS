@@ -42,7 +42,7 @@ export default function MediaOverview() {
     {repo.find({}).then(media => setMedia(media))} , [remult]);
 
   let entries = media.map(media =>
-    [media.id, media.publicationDate, media.thumbnail, media.location, media.title, media.description, media.authors, media.mediaSources, media.mediaTypes, media.url, media.notes]);
+    [media.id, media.publicationDate, media.thumbnail, media.location, media.title, media.description, media.author, media.source, media.type, media.url, media.notes]);
     const data = Object.fromEntries(entries);
 
   return (

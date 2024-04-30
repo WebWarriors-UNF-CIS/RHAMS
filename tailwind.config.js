@@ -24,7 +24,7 @@ module.exports = {
         d: '#E5E7EB',
         e: '#374151',
         f: '#727375',
-        border: ' #e6e6e6',
+        border: ' #A4A4A4',
         input: '#e6e6e6',
         ring: "#f2f2f2",
         background: '#F2F5EA',
