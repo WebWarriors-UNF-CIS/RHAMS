@@ -1,6 +1,18 @@
 import { Entity, Fields, Relations, remult } from 'remult'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
+export enum MediaTypes {
+    Article = 'Article',
+    Audio = 'Audio',
+    Book = 'Book',
+    Film = 'Film',
+    Image = 'Image',
+    Interview = 'Interview',
+    Podcast = 'Podcast',
+    Video = 'Video',
+    Website = 'Website',
+}
+
 @Entity('media', { allowApiCrud: true })
 export class Media 
 {
@@ -36,8 +48,8 @@ export class Media
     @Fields.json()
     mediaSources: any [] = [];
 
-    @Fields.json()
-    mediaTypes: any [] = [];
+    @Fields.enum(() => MediaTypes)
+    type!: MediaTypes;
 
     @Fields.string()
     url?: string;
@@ -63,6 +75,12 @@ export class Media
     async setMediaSources(mediaSourcesKey: string)
     {this.mediaSources = await fetchValueListByCategory("Media Source", remult)}
 
-    async setMediaTypes(mediaTypesKey: string)
-    {this.mediaTypes = await fetchValueListByCategory("Media Type", remult)}
+    async setMediaType(typeKey: string) {
+      const validTypes = await fetchValueListByCategory("Media Type", remult);
+      if (validTypes.includes(typeKey)) {
+          this.type = typeKey as MediaTypes;
+      } else {
+          throw new Error("Invalid type specified.");
+      }
+  }
 }
