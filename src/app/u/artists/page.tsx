@@ -44,6 +44,10 @@ export default function ArtistsOverview()
   useEffect(() =>
     {repo.find({}).then(artists => setArtists(artists))} , [remult]);
 
+  const handleArtistClick = (artistId) => {
+    router.push(`/u/artists/${artistId}`);
+  };
+
   let entries = artist.map(artist => 
     [artist.id, artist.thumbnail, artist.lastName, artist.firstName, artist.notes]);
     const data = Object.fromEntries(entries);
@@ -75,7 +79,7 @@ export default function ArtistsOverview()
         </div>
       </div>
       <div className="border-t border-t-d h-96 pt-4 text-center w-full">
-      <DataTable columns={columns} data={data}/>
+        <DataTable columns={columns} data={data}/>
       </div>
       </div>
     </div>
