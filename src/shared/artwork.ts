@@ -3,6 +3,50 @@ import { Artist } from './artist'
 import { Edition } from './edition'
 import { fetchValueListByCategory } from '../utils/valueListDriver'
 
+export enum Types {
+  PAINTING = 'painting',
+  SCULPTURE = 'sculpture',
+  PHOTOGRAPHY = 'photography',
+  DRAWING = 'drawing',
+  PRINT = 'print',
+  MIXEDMEDIA = 'mixed media',
+  CERAMICS = 'ceramics',
+  GLASS = 'glass',
+  TEXTILES = 'textiles',
+  FURNITURE = 'furniture',
+}
+
+export enum Mediums {
+  OIL = 'oil',
+  ACRYLIC = 'acrylic',
+  WATERCOLOR = 'watercolor',
+  PASTEL = 'pastel',
+  CHARCOAL = 'charcoal',
+  GRAPHITE = 'graphite',
+  INK = 'ink',
+  PENCIL = 'pencil',
+  MIXEDMEDIA = 'mixed media',
+  BRONZE = 'bronze',
+  CLAY = 'clay',
+  GLASS = 'glass',
+  FABRIC = 'fabric',
+  WOOD = 'wood',
+  METAL = 'metal',
+  PLASTER = 'plaster',
+  FIBERGLASS = 'fiberglass',
+  PLASTIC = 'plastic',
+  CONCRETE = 'concrete',
+  PAPER = 'paper',
+  CANVAS = 'canvas',
+  STONE = 'stone',
+  TEXTILE = 'textile',
+  CERAMIC = 'ceramic',
+  PORCELAIN = 'porcelain',
+  EARTHENWARE = 'earthenware',
+  STONEWARE = 'stoneware',
+  TERRACOTTA = 'terracotta',
+}
+
 @Entity('artwork', { allowApiCrud: true })
 export class Artwork 
 {
@@ -35,11 +79,11 @@ export class Artwork
     @Fields.string()
     description?: string;
 
-    @Fields.json()
-    types: any[] = [];
+    @Fields.enum(() => Types)
+    type!: Types;
 
-    @Fields.json()
-    mediums: any[] = [];
+    @Fields.enum(() => Mediums)
+    medium!: Mediums;
 
     @Fields.json()
     measurements: { height?: number; width?: number; depth?: number } = {};
@@ -69,9 +113,21 @@ export class Artwork
         }
     }
     /*/
-    async setMedium(mediumKey: string) 
-    {this.mediums = await fetchValueListByCategory("Medium", remult);}
+    async setMedium(mediumKey: string) {
+      const validMediums = await fetchValueListByCategory("Medium", remult);
+      if (validMediums.includes(mediumKey)) {
+          this.medium = mediumKey as Mediums;
+      } else {
+          throw new Error("Invalid medium specified.");
+      }
+  }
 
-    async setType(typeKey: string) 
-    {this.types = await fetchValueListByCategory("Type", remult);}
+    async setType(typeKey: string) {
+      const validTypes = await fetchValueListByCategory("Type", remult);
+      if (validTypes.includes(typeKey)) {
+          this.type = typeKey as Types;
+      } else {
+          throw new Error("Invalid type specified.");
+      }
+  }
 }
