@@ -19,11 +19,12 @@ import { Calendar } from "@/components/ui/calendar"
 import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
+import {UserRole} from '@/shared/user';
 
 const formSchema = z.object({
   firstName: z.string().nonempty(),
   lastName: z.string().nonempty(),
-  role: z.enum(['admin', 'guest']),
+  UserRole: z.enum(['admin', 'guest']),
   email: z.string().email(),
   password: z.string().nonempty(),
   passwordConfirm: z.string().nonempty(),
@@ -43,7 +44,7 @@ export default function CreateUserAccount() {
     defaultValues: {
       firstName: '',
       lastName: '',
-      role: 'admin',
+      UserRole: 'admin',
       email: '',
       password: '',
       passwordHash: '',
@@ -115,19 +116,23 @@ export default function CreateUserAccount() {
           
           <FormField 
             control={form.control} 
-            name="role" 
+            name="UserRole" 
             render={({ field }) => {
                     return (
                       <FormItem>
-                        <FormLabel>Role</FormLabel>
+                        <FormLabel>User Role</FormLabel>
                         <FormControl>
-                          <Input placeholder="role" type="string"{...field} />
+                        <select {...field} className="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                          <option value="">Select Role</option>
+                          {Object.entries(UserRole).map(([key, value]) => (
+                            <option key={key} value={value}>{value}</option>
+                          ))}
+                        </select>
                         </FormControl>
                         <FormMessage/>
                       </FormItem>
                     );
-                  }}
-          />
+                  }}/>
 
             <FormField 
             control={form.control} 
