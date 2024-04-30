@@ -5,10 +5,8 @@ import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import React from 'react';
 import Creatable from 'react-select/creatable';
-import { ArtistData, columns } from "@/components/ui/columns/artist-overview"
-import { DataTable } from "@/components/ui/data-table"
 
-export default function ArtistDetail() {
+export default function ArtworksDetail() {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const pathname = usePathname();
@@ -32,25 +30,27 @@ export default function ArtistDetail() {
       {slug || 'Loading...'}
       </h1>
       <div className="container mx-auto p-6">
-      <div className="flex flex-col lg:flex-row justify-between">
-        {/* Left Column for Image and Bio */}
-        <div className="flex flex-col items-center bg-gray-200 p-4 w-full lg:w-1/3 text-center mb-6 lg:mb-0">
-          <div className="bg-gray-400 w-48 h-48 mb-4">Image Placeholder</div>
-          <div className="bg-green-200 p-2 w-full">Lifespan Placeholder</div>
-          <div className="bg-gray-300 p-4 mt-4">Bio Placeholder</div>
+      {/* Header Section */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Artwork Title</h1>
+        <button className="bg-green-500 text-white py-2 px-4 rounded">Edit Placeholder</button>
+      </div>
+
+      {/* Main Content Section */}
+      <div className="flex flex-col lg:flex-row">
+        {/* Left Column for Artwork Image and Details */}
+        <div className="bg-gray-200 p-4 w-full lg:w-1/2">
+          <div className="bg-gray-300 w-1/2 p-20 mb-4">Image Placeholder</div>
+          <div className="bg-gray-300 p-4 mb-4">Artwork Info Placeholder</div>
+          <div className="bg-gray-300 p-4">Artwork Description Placeholder</div>
         </div>
 
-        {/* Right Column for Artist Details */}
-        <div className="flex-grow bg-gray-200 p-4">
-          <div className="text-xl mb-6">Artist Name</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="bg-gray-300 p-4">Detail Field Placeholder</div>
-            {/* Repeat for the number of detail fields */}
-          </div>
+        {/* Right Column for Piece Details and Notes */}
+        <div className="flex-grow bg-gray-200 p-4 lg:ml-4">
+          <div className="bg-gray-300 p-4 mb-4">Piece Details Placeholder</div>
           <div className="bg-gray-300 p-4">Notes Placeholder</div>
-          <div className="flex justify-between mt-4">
-            <button className="bg-red-500 text-white p-2">Delete Button Placeholder</button>
-            <button className="bg-green-500 text-white p-2">Edit Button Placeholder</button>
+          <div className="flex justify-end mt-4">
+            <button className="bg-green-500 text-white py-2 px-4 rounded">View Sales Placeholder</button>
           </div>
         </div>
       </div>
